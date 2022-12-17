@@ -1,7 +1,16 @@
 function TopBar() {
   return (
     <div className="top-bar">
-      <h1>TopBar</h1>
+      <>
+        <div className="logo">TASK LOGO</div>
+      </>
+      <>
+        <div className="board-title">A Board Title</div>
+        <>
+          <button>+ Add New Task</button>
+          <button>...</button>
+        </>
+      </>
     </div>
   )
 }
