@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout from '../components/Layout'
 import TopBar from '../components/TopBar'
 import TaskBoard from '../components/TaskBoard'
+import SideBar from '../components/SideBar'
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+        <SideBar />
         <TopBar />
         <TaskBoard />
       </Layout>
