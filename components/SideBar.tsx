@@ -1,11 +1,11 @@
+import { useEffect } from 'react'
+
 type SideBarProps = {
   tasksData: any
   setTaskBoardFocus: any
 }
 
 function SideBar({ tasksData, setTaskBoardFocus }: SideBarProps) {
-  // console.log(tasksData.boards[0].name)
-
   return (
     <div className="sidebar">
       <div className="taskSide">

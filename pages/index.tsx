@@ -14,8 +14,11 @@ export default function Home() {
     useState<boolean>(false)
   const [taskBoardFocus, setTaskBoardFocus] = useState<string>('')
 
-  console.log(taskBoardFocus)
+  const [subtasksLength, setSubtasksLength] = useState<any>([])
+  const [subtasksCompleted, setSubtasksCompleted] = useState<any>([])
+  const [string, setString] = useState<any>('')
 
+  console.log(taskBoardFocus)
   // console.log(tasksData)
   return (
     <>
@@ -40,7 +43,10 @@ export default function Home() {
           tasksData={tasksData}
           taskBoardFocus={taskBoardFocus}
         />
-        {/* <TaskBoard /> */}
+        <TaskBoard
+          tasksData={tasksData}
+          taskBoardFocus={taskBoardFocus}
+        />
       </Layout>
     </>
   )
