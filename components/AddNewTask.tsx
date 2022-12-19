@@ -11,27 +11,30 @@ function AddNewTask({ setWantedNewTask }: AddNewTaskProps) {
       <h1>Add New Task</h1>
 
       <form>
-        <label>Task Title</label>
+        <p>Task Title</p>
         <input type="text" name="taskTitle" id="taskTitle" />
 
-        <label>Task Description</label>
+        <p>Task Description</p>
         <input
           type="text"
           name="taskDescription"
           id="taskDescription"
         />
 
-        <label>Task Subtasks</label>
+        <p>Task Subtasks</p>
         <input type="text" name="taskSubtasks" id="taskSubtasks" />
         <button>X</button>
+        <br />
         <button>+Add New Subtask</button>
 
-        <label>Status</label>
-        <section>
+        <p>Status</p>
+        <select>
           <option value="">abc</option>
           <option value="">abc</option>
           <option value="">abc</option>
-        </section>
+        </select>
+
+        <br />
         <button onClick={handleCreate}>Create Task</button>
       </form>
     </div>
