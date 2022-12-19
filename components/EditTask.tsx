@@ -1,15 +1,16 @@
-type AddNewTaskProps = {
-  setWantedNewTask: any
+type TaskBoardProps = {
+  setWantedEditTask: any
+  setWantedDeleteTask: any
 }
 
-function AddNewTask({ setWantedNewTask }: AddNewTaskProps) {
-  function handleCreate() {
-    setWantedNewTask(false)
-  }
+function EditTask({
+  setWantedEditTask,
+  setWantedDeleteTask,
+}: TaskBoardProps) {
   return (
     <div className="AddNewTask">
       <h1>Add New Task</h1>
-      <button>...</button>
+
       <form>
         <p>Task Title</p>
         <input type="text" name="taskTitle" id="taskTitle" />
@@ -35,10 +36,18 @@ function AddNewTask({ setWantedNewTask }: AddNewTaskProps) {
         </select>
 
         <br />
-        <button onClick={handleCreate}>Create Task</button>
+        <button>Save Changes</button>
+        <br />
+        <button
+          onClick={() => {
+            setWantedDeleteTask(true)
+          }}
+        >
+          Delete Task
+        </button>
       </form>
     </div>
   )
 }
 
-export default AddNewTask
+export default EditTask

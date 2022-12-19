@@ -5,14 +5,14 @@ type TaskBoardProps = {
   tasksData: any
   taskBoardFocus: any
   wantedNewTask: any
-  setWantedNewTask: any
+  setShowTaskDetails: any
 }
 
 function TaskBoard({
   tasksData,
   taskBoardFocus,
   wantedNewTask,
-  setWantedNewTask,
+  setShowTaskDetails,
 }: TaskBoardProps) {
   return (
     <div className="task-board">
@@ -25,7 +25,12 @@ function TaskBoard({
             <div key={column.name}>
               <h3>{column.name}</h3>
               {column.tasks.map((task: any) => (
-                <button key={task.title}>
+                <button
+                  onClick={() => {
+                    setShowTaskDetails(true)
+                  }}
+                  key={task.title}
+                >
                   <h4>{task.title}</h4>
                   <p>
                     {

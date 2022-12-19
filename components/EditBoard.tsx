@@ -1,8 +1,12 @@
 type EditBoardProps = {
   setWantedEditBoard: any
+  setWantedDeleteBoard: any
 }
 
-function EditBoard({ setWantedEditBoard }: EditBoardProps) {
+function EditBoard({
+  setWantedEditBoard,
+  setWantedDeleteBoard,
+}: EditBoardProps) {
   return (
     <div>
       <h1>Edit Board</h1>
@@ -18,6 +22,13 @@ function EditBoard({ setWantedEditBoard }: EditBoardProps) {
         }}
       >
         Save Changes
+      </button>
+      <button
+        onClick={() => {
+          setWantedDeleteBoard(true)
+        }}
+      >
+        Delete Board
       </button>
     </div>
   )

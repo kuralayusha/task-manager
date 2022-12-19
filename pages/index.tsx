@@ -4,6 +4,10 @@ import TaskBoard from '../components/TaskBoard'
 import SideBar from '../components/SideBar'
 import AddNewTask from '../components/AddNewTask'
 import EditBoard from '../components/EditBoard'
+import EditTask from '../components/EditTask'
+import DeleteBoard from '../components/DeleteBoard'
+import DeleteTask from '../components/DeleteTask'
+import ShowTaskDetail from '../components/ShowTaskDetail'
 
 import Head from 'next/head'
 import Data from '../datas/data.json'
@@ -22,6 +26,13 @@ export default function Home() {
 
   const [wantedNewTask, setWantedNewTask] = useState<boolean>(false)
   const [wantedEditBoard, setWantedEditBoard] =
+    useState<boolean>(false)
+  const [wantedEditTask, setWantedEditTask] = useState<boolean>(false)
+  const [wantedDeleteBoard, setWantedDeleteBoard] =
+    useState<boolean>(false)
+  const [wantedDeleteTask, setWantedDeleteTask] =
+    useState<boolean>(false)
+  const [ShowTaskDetails, setShowTaskDetails] =
     useState<boolean>(false)
 
   console.log(taskBoardFocus)
@@ -55,14 +66,41 @@ export default function Home() {
           tasksData={tasksData}
           taskBoardFocus={taskBoardFocus}
           wantedNewTask={wantedNewTask}
-          setWantedNewTask={setWantedNewTask}
+          setShowTaskDetails={setShowTaskDetails}
         />
-        {wantedNewTask && (
-          <AddNewTask setWantedNewTask={setWantedNewTask} />
-        )}
-        {wantedEditBoard && (
-          <EditBoard setWantedEditBoard={setWantedEditBoard} />
-        )}
+        <>
+          {ShowTaskDetails && (
+            <ShowTaskDetail
+              setShowTaskDetails={setShowTaskDetails}
+              setWantedEditTask={setWantedEditTask}
+            />
+          )}
+          {wantedNewTask && (
+            <AddNewTask setWantedNewTask={setWantedNewTask} />
+          )}
+          {wantedEditTask && (
+            <EditTask
+              setWantedEditTask={setWantedEditTask}
+              setWantedDeleteTask={setWantedDeleteTask}
+            />
+          )}
+          {wantedDeleteTask && (
+            <DeleteTask setWantedDeleteTask={setWantedDeleteTask} />
+          )}
+        </>
+        <>
+          {wantedEditBoard && (
+            <EditBoard
+              setWantedEditBoard={setWantedEditBoard}
+              setWantedDeleteBoard={setWantedDeleteBoard}
+            />
+          )}
+          {wantedDeleteBoard && (
+            <DeleteBoard
+              setWantedDeleteBoard={setWantedDeleteBoard}
+            />
+          )}
+        </>
       </Layout>
     </>
   )
