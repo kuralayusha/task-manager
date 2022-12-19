@@ -4,17 +4,21 @@ import { useState } from 'react'
 type TaskBoardProps = {
   tasksData: any
   taskBoardFocus: any
+  wantedNewTask: any
+  setWantedNewTask: any
 }
 
-function TaskBoard({ tasksData, taskBoardFocus }: TaskBoardProps) {
-  const [subtasksCompleted, setSubtasksCompleted] = useState<any>({})
-  const [subtasksLength, setSubtasksLength] = useState<any>({})
-
-  console.log(subtasksCompleted, subtasksLength)
+function TaskBoard({
+  tasksData,
+  taskBoardFocus,
+  wantedNewTask,
+  setWantedNewTask,
+}: TaskBoardProps) {
   return (
     <div className="task-board">
       {/* TODO: if there is no column show 
       a title and a button to add a new column */}
+
       {tasksData.boards.map((board: any) => {
         if (board.name === taskBoardFocus) {
           return board.columns.map((column: any) => (
@@ -37,6 +41,7 @@ function TaskBoard({ tasksData, taskBoardFocus }: TaskBoardProps) {
           ))
         }
       })}
+      <button>+ New Column</button>
     </div>
   )
 }

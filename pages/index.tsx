@@ -1,9 +1,10 @@
-import Head from 'next/head'
 import Layout from '../components/Layout'
 import TopBar from '../components/TopBar'
 import TaskBoard from '../components/TaskBoard'
 import SideBar from '../components/SideBar'
+import AddNewTask from '../components/AddNewTask'
 
+import Head from 'next/head'
 import Data from '../datas/data.json'
 import { useEffect, useState } from 'react'
 
@@ -17,6 +18,7 @@ export default function Home() {
   const [subtasksLength, setSubtasksLength] = useState<any>([])
   const [subtasksCompleted, setSubtasksCompleted] = useState<any>([])
   const [string, setString] = useState<any>('')
+  const [wantedNewTask, setWantedNewTask] = useState<boolean>(false)
 
   console.log(taskBoardFocus)
   // console.log(tasksData)
@@ -42,11 +44,17 @@ export default function Home() {
         <TopBar
           tasksData={tasksData}
           taskBoardFocus={taskBoardFocus}
+          setWantedNewTask={setWantedNewTask}
         />
         <TaskBoard
           tasksData={tasksData}
           taskBoardFocus={taskBoardFocus}
+          wantedNewTask={wantedNewTask}
+          setWantedNewTask={setWantedNewTask}
         />
+        {wantedNewTask && (
+          <AddNewTask setWantedNewTask={setWantedNewTask} />
+        )}
       </Layout>
     </>
   )

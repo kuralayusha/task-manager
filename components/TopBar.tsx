@@ -1,10 +1,21 @@
+import AddNewTask from './AddNewTask'
+
 type TopBarProps = {
   tasksData: any
   taskBoardFocus: any
+  setWantedNewTask: any
 }
 
-function TopBar({ tasksData, taskBoardFocus }: TopBarProps) {
+function TopBar({
+  tasksData,
+  taskBoardFocus,
+  setWantedNewTask,
+}: TopBarProps) {
   const boardTitle = taskBoardFocus
+
+  function handleAddNewTask() {
+    setWantedNewTask(true)
+  }
 
   return (
     <div className="top-bar">
@@ -14,7 +25,7 @@ function TopBar({ tasksData, taskBoardFocus }: TopBarProps) {
       <div>
         <h1 className="board-title">{boardTitle}</h1>
         <div>
-          <button>+ Add New Task</button>
+          <button onClick={handleAddNewTask}>+ Add New Task</button>
           <button>...</button>
         </div>
         <div />
