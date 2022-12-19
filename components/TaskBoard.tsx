@@ -41,7 +41,6 @@ function TaskBoard({
           ))
         }
       })}
-      <button>+ New Column</button>
     </div>
   )
 }

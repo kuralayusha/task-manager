@@ -4,12 +4,14 @@ type TopBarProps = {
   tasksData: any
   taskBoardFocus: any
   setWantedNewTask: any
+  setWantedEditBoard: any
 }
 
 function TopBar({
   tasksData,
   taskBoardFocus,
   setWantedNewTask,
+  setWantedEditBoard,
 }: TopBarProps) {
   const boardTitle = taskBoardFocus
 
@@ -26,7 +28,13 @@ function TopBar({
         <h1 className="board-title">{boardTitle}</h1>
         <div>
           <button onClick={handleAddNewTask}>+ Add New Task</button>
-          <button>...</button>
+          <button
+            onClick={() => {
+              setWantedEditBoard(true)
+            }}
+          >
+            ...
+          </button>
         </div>
         <div />
       </div>
