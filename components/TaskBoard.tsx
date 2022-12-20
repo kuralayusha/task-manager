@@ -6,6 +6,8 @@ type TaskBoardProps = {
   taskBoardFocus: any
   wantedNewTask: any
   setShowTaskDetails: any
+  setIsSideBarHidden: any
+  isSideBarHidden: boolean
 }
 
 function TaskBoard({
@@ -13,9 +15,23 @@ function TaskBoard({
   taskBoardFocus,
   wantedNewTask,
   setShowTaskDetails,
+  setIsSideBarHidden,
+  isSideBarHidden,
 }: TaskBoardProps) {
   return (
     <div className="task-board">
+      <button
+        style={
+          isSideBarHidden
+            ? { background: 'fff' }
+            : { display: 'none' }
+        }
+        onClick={() => {
+          setIsSideBarHidden(false)
+        }}
+      >
+        sidebar
+      </button>
       {/* TODO: if there is no column show 
       a title and a button to add a new column */}
 

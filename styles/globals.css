@@ -1,19 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    padding: 10px 20px;
+    height: 100vh;
+}
+
+.sidebar.hidden {
+    display: none;
+}
+
+
+
+
+
+
 .task-board {
     background-color: rgb(255, 208, 208);
     width: 100%;
-    margin: 20px 0;
 }
 
 .sidebar {
     background-color: rgb(202, 255, 255);
     width: 100%;
-    margin: 20px 0;
 }
 
 .top-bar {
     background-color: rgb(255, 255, 202);
     width: 100%;
-    margin: 20px 0;
 }
 
 .layout {

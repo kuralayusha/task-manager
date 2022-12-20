@@ -20,10 +20,6 @@ export default function Home() {
     useState<boolean>(false)
   const [taskBoardFocus, setTaskBoardFocus] = useState<string>('')
 
-  const [subtasksLength, setSubtasksLength] = useState<any>([])
-  const [subtasksCompleted, setSubtasksCompleted] = useState<any>([])
-  const [string, setString] = useState<any>('')
-
   const [wantedNewTask, setWantedNewTask] = useState<boolean>(false)
   const [wantedEditBoard, setWantedEditBoard] =
     useState<boolean>(false)
@@ -37,6 +33,8 @@ export default function Home() {
 
   console.log(taskBoardFocus)
   // console.log(tasksData)
+  console.log(isSideBarHidden)
+
   return (
     <>
       <Head>
@@ -52,22 +50,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <SideBar
-          tasksData={tasksData}
-          setTaskBoardFocus={setTaskBoardFocus}
-        />
         <TopBar
           tasksData={tasksData}
           taskBoardFocus={taskBoardFocus}
           setWantedNewTask={setWantedNewTask}
           setWantedEditBoard={setWantedEditBoard}
         />
-        <TaskBoard
-          tasksData={tasksData}
-          taskBoardFocus={taskBoardFocus}
-          wantedNewTask={wantedNewTask}
-          setShowTaskDetails={setShowTaskDetails}
-        />
+        <div className="container">
+          <SideBar
+            tasksData={tasksData}
+            setTaskBoardFocus={setTaskBoardFocus}
+            setIsSideBarHidden={setIsSideBarHidden}
+            isSideBarHidden={isSideBarHidden}
+          />
+          <TaskBoard
+            tasksData={tasksData}
+            taskBoardFocus={taskBoardFocus}
+            wantedNewTask={wantedNewTask}
+            setShowTaskDetails={setShowTaskDetails}
+            setIsSideBarHidden={setIsSideBarHidden}
+            isSideBarHidden={isSideBarHidden}
+          />
+        </div>
         <>
           {ShowTaskDetails && (
             <ShowTaskDetail
