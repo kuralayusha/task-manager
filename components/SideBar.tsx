@@ -5,6 +5,7 @@ type SideBarProps = {
   setTaskBoardFocus: any
   setIsSideBarHidden: any
   isSideBarHidden: boolean
+  setWantedNewBoard: any
 }
 
 function SideBar({
@@ -12,6 +13,7 @@ function SideBar({
   setTaskBoardFocus,
   setIsSideBarHidden,
   isSideBarHidden,
+  setWantedNewBoard,
 }: SideBarProps) {
   return (
     <div className={isSideBarHidden ? 'sidebar hidden' : 'sidebar'}>
@@ -28,7 +30,13 @@ function SideBar({
             {board.name}
           </button>
         ))}
-        <button>+Create New Board</button>
+        <button
+          onClick={() => {
+            setWantedNewBoard(true)
+          }}
+        >
+          +Create New Board
+        </button>
       </div>
       <br />
       <footer className="sideBarSettingsSide">

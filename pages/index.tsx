@@ -1,3 +1,5 @@
+import useLocalStorage from '../hooks/useLocalStorage'
+
 import Layout from '../components/Layout'
 import TopBar from '../components/TopBar'
 import TaskBoard from '../components/TaskBoard'
@@ -8,14 +10,15 @@ import EditTask from '../components/EditTask'
 import DeleteBoard from '../components/DeleteBoard'
 import DeleteTask from '../components/DeleteTask'
 import ShowTaskDetail from '../components/ShowTaskDetail'
+import AddNewBoard from '../components/AddNewBoard'
 
 import Head from 'next/head'
 import Data from '../datas/data.json'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [isDark, setIsDark] = useState<boolean>(false)
   const [tasksData, setTasksData] = useState<any>(Data)
+  const [isDark, setIsDark] = useState<boolean>(false)
   const [isSideBarHidden, setIsSideBarHidden] =
     useState<boolean>(false)
   const [taskBoardFocus, setTaskBoardFocus] = useState<string>('')
@@ -30,10 +33,15 @@ export default function Home() {
     useState<boolean>(false)
   const [ShowTaskDetails, setShowTaskDetails] =
     useState<boolean>(false)
+  const [wantedNewBoard, setWantedNewBoard] = useState<boolean>(false)
 
-  console.log(taskBoardFocus)
+  const [mainData, setMainData] = useLocalStorage('mainData', {
+    boards: [],
+  })
+
+  // console.log(taskBoardFocus)
   // console.log(tasksData)
-  console.log(isSideBarHidden)
+  // console.log(isSideBarHidden)
 
   return (
     <>
@@ -50,28 +58,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <TopBar
-          tasksData={tasksData}
-          taskBoardFocus={taskBoardFocus}
-          setWantedNewTask={setWantedNewTask}
-          setWantedEditBoard={setWantedEditBoard}
-        />
-        <div className="container">
-          <SideBar
-            tasksData={tasksData}
-            setTaskBoardFocus={setTaskBoardFocus}
-            setIsSideBarHidden={setIsSideBarHidden}
-            isSideBarHidden={isSideBarHidden}
-          />
-          <TaskBoard
-            tasksData={tasksData}
-            taskBoardFocus={taskBoardFocus}
-            wantedNewTask={wantedNewTask}
-            setShowTaskDetails={setShowTaskDetails}
-            setIsSideBarHidden={setIsSideBarHidden}
-            isSideBarHidden={isSideBarHidden}
-          />
-        </div>
         <>
           {ShowTaskDetails && (
             <ShowTaskDetail
@@ -93,6 +79,15 @@ export default function Home() {
           )}
         </>
         <>
+          {wantedNewBoard && (
+            <AddNewBoard
+              setWantedNewBoard={setWantedNewBoard}
+              setTasksData={setTasksData}
+              tasksData={tasksData}
+              mainData={mainData}
+              setMainData={setMainData}
+            />
+          )}
           {wantedEditBoard && (
             <EditBoard
               setWantedEditBoard={setWantedEditBoard}
@@ -105,6 +100,29 @@ export default function Home() {
             />
           )}
         </>
+        <TopBar
+          tasksData={tasksData}
+          taskBoardFocus={taskBoardFocus}
+          setWantedNewTask={setWantedNewTask}
+          setWantedEditBoard={setWantedEditBoard}
+        />
+        <div className="container">
+          <SideBar
+            tasksData={tasksData}
+            setTaskBoardFocus={setTaskBoardFocus}
+            setIsSideBarHidden={setIsSideBarHidden}
+            isSideBarHidden={isSideBarHidden}
+            setWantedNewBoard={setWantedNewBoard}
+          />
+          <TaskBoard
+            tasksData={tasksData}
+            taskBoardFocus={taskBoardFocus}
+            wantedNewTask={wantedNewTask}
+            setShowTaskDetails={setShowTaskDetails}
+            setIsSideBarHidden={setIsSideBarHidden}
+            isSideBarHidden={isSideBarHidden}
+          />
+        </div>
       </Layout>
     </>
   )
