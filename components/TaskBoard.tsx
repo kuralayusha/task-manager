@@ -8,6 +8,8 @@ type TaskBoardProps = {
   setShowTaskDetails: any
   setIsSideBarHidden: any
   isSideBarHidden: boolean
+  mainData: any
+  setMainData: any
 }
 
 function TaskBoard({
@@ -17,7 +19,14 @@ function TaskBoard({
   setShowTaskDetails,
   setIsSideBarHidden,
   isSideBarHidden,
+  mainData,
+  setMainData,
 }: TaskBoardProps) {
+  // the use effect below is to get items from local storage when the page loads
+
+  // console.log(mainData)
+  // console.log(mainData.boards[1].name)
+
   return (
     <div className="task-board">
       <button
@@ -35,7 +44,7 @@ function TaskBoard({
       {/* TODO: if there is no column show 
       a title and a button to add a new column */}
 
-      {tasksData.boards.map((board: any) => {
+      {mainData.boards.map((board: any) => {
         if (board.name === taskBoardFocus) {
           return board.columns.map((column: any) => (
             <div key={column.name}>

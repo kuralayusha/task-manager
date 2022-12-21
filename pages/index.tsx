@@ -35,12 +35,12 @@ export default function Home() {
     useState<boolean>(false)
   const [wantedNewBoard, setWantedNewBoard] = useState<boolean>(false)
 
-  const [mainData, setMainData] = useLocalStorage('mainData', {
+  const [mainData, setMainData] = useState<any>({
     boards: [],
   })
 
   // console.log(taskBoardFocus)
-  // console.log(tasksData)
+  console.log(tasksData)
   // console.log(isSideBarHidden)
 
   return (
@@ -113,6 +113,8 @@ export default function Home() {
             setIsSideBarHidden={setIsSideBarHidden}
             isSideBarHidden={isSideBarHidden}
             setWantedNewBoard={setWantedNewBoard}
+            mainData={mainData}
+            setMainData={setMainData}
           />
           <TaskBoard
             tasksData={tasksData}
@@ -121,6 +123,8 @@ export default function Home() {
             setShowTaskDetails={setShowTaskDetails}
             setIsSideBarHidden={setIsSideBarHidden}
             isSideBarHidden={isSideBarHidden}
+            mainData={mainData}
+            setMainData={setMainData}
           />
         </div>
       </Layout>

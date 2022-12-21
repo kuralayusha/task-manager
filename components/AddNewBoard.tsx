@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 
 type AddNewBoardProps = {
@@ -16,9 +16,10 @@ function AddNewBoard({
   mainData,
   setMainData,
 }: AddNewBoardProps) {
-  const [counter, setCounter] = useState<number | string | any>(0)
+  const [counter, setCounter] = useState<number | string | any>(1)
   const [boardNameIs, setBoardNameIs] = useState<string | any>('')
   const [columsNameAre, setColumsNameAre] = useState<string | any>([])
+  const [columsArray, setColumsArray] = useState<string | any>([])
 
   //   handleChangeBoardName sets the state of boardNameIs to the value of the input
   //   handleChangeColumsName sets the state of columsNameAre to the value of the input
@@ -34,22 +35,34 @@ function AddNewBoard({
   }
 
   const handleClick = () => {
+    setColumsArray([...columsArray, columsNameAre])
+    setColumsNameAre('')
     setCounter(counter + 1)
   }
 
   const handleCreateBoard = () => {
-    const newBoard = {
-      boardName: boardNameIs,
-      columns: columsNameAre,
-    }
-    const newBoards = [...mainData.boards, newBoard]
-    setMainData({ boards: newBoards })
-    setTasksData(newBoards)
-    setWantedNewBoard(false)
+    setMainData({
+      ...mainData,
+      boards: [
+        ...mainData.boards,
+        {
+          name: boardNameIs,
+          columns: { columsArray },
+        },
+      ],
+    })
   }
 
-  console.log({ boardNameIs })
-  console.log({ columsNameAre })
+  // the use effect should starts when the state of mainData changes and stores the data in the local storage
+
+  useEffect(() => {
+    localStorage.setItem('mainData', JSON.stringify(mainData))
+  }, [mainData])
+
+  // console.log({ boardNameIs })
+  // console.log({ columsNameAre })
+  // console.log({ mainData })
+  // console.log({ columsArray })
 
   return (
     <div className="add-new-board">
@@ -60,25 +73,26 @@ function AddNewBoard({
           type="text"
           name="board-name"
           id="board-name"
+          value={boardNameIs}
           onChange={(e) => handleChangeBoardName(e)}
         />
         <br />
         <label htmlFor="">Columns</label>
         {Array.from(Array(counter)).map((c, index) => {
           return (
-            <>
+            <div key={c}>
               <br />{' '}
               <input
-                key={c}
+                // value={columsNameAre}
                 type="text"
                 onChange={(e) => handleChangeColumsName(e)}
               ></input>
-            </>
+            </div>
           )
         })}
         <br />
         <button type="button" onClick={handleClick}>
-          + Add New Column
+          + Add This Column
         </button>
         <br />
         <button onClick={handleCreateBoard}>Create New Board</button>

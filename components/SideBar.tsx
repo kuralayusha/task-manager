@@ -6,6 +6,8 @@ type SideBarProps = {
   setIsSideBarHidden: any
   isSideBarHidden: boolean
   setWantedNewBoard: any
+  mainData: any
+  setMainData: any
 }
 
 function SideBar({
@@ -14,7 +16,15 @@ function SideBar({
   setIsSideBarHidden,
   isSideBarHidden,
   setWantedNewBoard,
+  mainData,
+  setMainData,
 }: SideBarProps) {
+  useEffect(() => {
+    const data = localStorage.getItem('mainData')
+    if (data) {
+      setMainData(JSON.parse(data))
+    }
+  }, [])
   return (
     <div className={isSideBarHidden ? 'sidebar hidden' : 'sidebar'}>
       <div className="taskSide">
@@ -22,7 +32,7 @@ function SideBar({
         {/* TODO: we have to map all boards 
         and take them titles then for each title there
         shoul a button. */}
-        {tasksData.boards.map((board: any) => (
+        {mainData.boards.map((board: any) => (
           <button
             key={board.name}
             onClick={() => setTaskBoardFocus(board.name)}
