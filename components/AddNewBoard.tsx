@@ -21,6 +21,10 @@ function AddNewBoard({
   const [columsNameAre, setColumsNameAre] = useState<string | any>([])
   const [columsArray, setColumsArray] = useState<string | any>([])
 
+  useEffect(() => {
+    localStorage.setItem('mainData', JSON.stringify(mainData))
+    console.log('gönderildi')
+  }, [mainData])
   //   handleChangeBoardName sets the state of boardNameIs to the value of the input
   //   handleChangeColumsName sets the state of columsNameAre to the value of the input
   //   handleClick  adds 1 to the counter state and creates a new input field for each column and sets the state of columsNameAre to the value of the input and pushes it to the array and for each input it gives different ids
@@ -51,13 +55,12 @@ function AddNewBoard({
         },
       ],
     })
+    setTimeout(() => {
+      setWantedNewBoard(false)
+    }, 100)
   }
 
   // the use effect should starts when the state of mainData changes and stores the data in the local storage
-
-  useEffect(() => {
-    localStorage.setItem('mainData', JSON.stringify(mainData))
-  }, [mainData])
 
   // console.log({ boardNameIs })
   // console.log({ columsNameAre })
