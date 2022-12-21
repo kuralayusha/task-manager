@@ -19,11 +19,11 @@ function AddNewBoard({
   const [counter, setCounter] = useState<number | string | any>(1)
   const [boardNameIs, setBoardNameIs] = useState<string | any>('')
   const [columsNameAre, setColumsNameAre] = useState<string | any>([])
-  const [columsArray, setColumsArray] = useState<string | any>([])
+  const [columnsArray, setColumnsArray] = useState<string | any>([])
 
   useEffect(() => {
     localStorage.setItem('mainData', JSON.stringify(mainData))
-    console.log('gönderildi')
+    // console.log('gönderildi')
   }, [mainData])
   //   handleChangeBoardName sets the state of boardNameIs to the value of the input
   //   handleChangeColumsName sets the state of columsNameAre to the value of the input
@@ -39,7 +39,7 @@ function AddNewBoard({
   }
 
   const handleClick = () => {
-    setColumsArray([...columsArray, columsNameAre])
+    setColumnsArray([...columnsArray, columsNameAre])
     setColumsNameAre('')
     setCounter(counter + 1)
   }
@@ -51,7 +51,7 @@ function AddNewBoard({
         ...mainData.boards,
         {
           name: boardNameIs,
-          columns: { columsArray },
+          columns: [columnsArray],
         },
       ],
     })
@@ -65,7 +65,7 @@ function AddNewBoard({
   // console.log({ boardNameIs })
   // console.log({ columsNameAre })
   // console.log({ mainData })
-  // console.log({ columsArray })
+  // console.log({ columnsArray })
 
   return (
     <div className="add-new-board">

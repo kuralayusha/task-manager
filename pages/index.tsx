@@ -39,8 +39,15 @@ export default function Home() {
     boards: [],
   })
 
+  useEffect(() => {
+    const data = localStorage.getItem('mainData')
+    if (data) {
+      setMainData(JSON.parse(data))
+    }
+  }, [])
+
   // console.log(taskBoardFocus)
-  console.log(tasksData)
+  // console.log(tasksData)
   // console.log(isSideBarHidden)
 
   return (

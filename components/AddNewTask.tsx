@@ -1,3 +1,11 @@
+// TODO: AddNewTask component
+// first when the user comes here this component have to know which board the user wants to add a new task to
+// we will controll that with the state of taskBoardFocus
+// so the user could type in the title, description, subtasks, status, and create a new task
+// also in status the user could choose from the options.
+// the options are the same as the columns in the task board (mainData.boards.columns)
+// when the use clicks on create task, the task should be added to the mainData.boards.columns.tasks
+
 type AddNewTaskProps = {
   setWantedNewTask: any
 }
@@ -23,7 +31,6 @@ function AddNewTask({ setWantedNewTask }: AddNewTaskProps) {
 
         <p>Task Subtasks</p>
         <input type="text" name="taskSubtasks" id="taskSubtasks" />
-        <button>X</button>
         <br />
         <button>+Add New Subtask</button>
 

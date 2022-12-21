@@ -19,12 +19,6 @@ function SideBar({
   mainData,
   setMainData,
 }: SideBarProps) {
-  useEffect(() => {
-    const data = localStorage.getItem('mainData')
-    if (data) {
-      setMainData(JSON.parse(data))
-    }
-  }, [])
   return (
     <div className={isSideBarHidden ? 'sidebar hidden' : 'sidebar'}>
       <div className="taskSide">
