@@ -77,6 +77,7 @@ export default function Home() {
               setWantedNewTask={setWantedNewTask}
               taskBoardFocus={taskBoardFocus}
               mainData={mainData}
+              setMainData={setMainData}
             />
           )}
           {wantedEditTask && (
