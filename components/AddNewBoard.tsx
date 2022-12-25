@@ -39,7 +39,11 @@ function AddNewBoard({
   }
 
   const handleClick = () => {
-    setColumnsArray([...columnsArray, columsNameAre])
+    setColumnsArray([...columnsArray, { columsNameAre }])
+    // const cnr = columnsArray.map((e: any) => {
+    //   name: e
+    // })
+    // setColumnsArray([...cnr, columsNameAre])
     setColumsNameAre('')
     setCounter(counter + 1)
   }
@@ -51,7 +55,7 @@ function AddNewBoard({
         ...mainData.boards,
         {
           name: boardNameIs,
-          columns: [columnsArray],
+          columns: columnsArray,
         },
       ],
     })

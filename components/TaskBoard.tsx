@@ -22,7 +22,7 @@ function TaskBoard({
   mainData,
   setMainData,
 }: TaskBoardProps) {
-  console.log(mainData.boards)
+  console.log(mainData)
 
   return (
     <div className="task-board">
@@ -39,21 +39,18 @@ function TaskBoard({
         sidebar
       </button>
       {/* TODO: if there is no column show 
-      a title and a button to add a new column */}
+      a title and a button to add a new column 
+      and render the page acurretivly to mainData*/}
       {mainData.boards.map((board: any) => {
         if (board.name === taskBoardFocus) {
           return (
             <div key={board.name}>
               <h3>{board.name}</h3>
-              <div className="columns">
-                {board.columns.map((column: any) => {
-                  return (
-                    <div key={column.name}>
-                      <h4>{column.name}</h4>
-                    </div>
-                  )
-                })}
-              </div>
+              {board.columns.map((column: any) => (
+                <div key={column}>
+                  <h3>{column.columsNameAre}</h3>
+                </div>
+              ))}
             </div>
           )
         }
