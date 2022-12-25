@@ -63,17 +63,17 @@ function TaskBoard({
                     >
                       <h3>{task.title}</h3>
                       {/* for each task calculate the subtask length and find wich of them are isComplited true then print it */}
-                      <p>{task.subtasks.length} subtasks</p>
-                      {/* now calculate each subtasks that are isCompleted true */}
                       <p>
+                        {' '}
                         {
                           task.subtasks.filter(
                             (subtask: any) =>
                               subtask.isCompleted === true
                           ).length
                         }{' '}
-                        subtasks are done
+                        of {task.subtasks.length} substasks
                       </p>
+                      {/* now calculate each subtasks that are isCompleted true */}
                     </button>
                   ))}
                 </div>
