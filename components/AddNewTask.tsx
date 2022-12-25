@@ -6,18 +6,65 @@
 // the options are the same as the columns in the task board (mainData.boards.columns)
 // when the use clicks on create task, the task should be added to the mainData.boards.columns.tasks
 
+import { useEffect, useState } from 'react'
+
 type AddNewTaskProps = {
   setWantedNewTask: any
+  taskBoardFocus: string
+  mainData: any
 }
 
-function AddNewTask({ setWantedNewTask }: AddNewTaskProps) {
-  function handleCreate() {
-    setWantedNewTask(false)
+function AddNewTask({
+  setWantedNewTask,
+  taskBoardFocus,
+  mainData,
+}: AddNewTaskProps) {
+  const [statusOptions, setStatusOptions] = useState<any>([])
+
+  // useEffect looks inside the taskBoardFocus and then it will take the columns names and put them in the status options as an array
+
+  // but if there is more than one column with the same name it will not add it to the array
+  useEffect(() => {
+    mainData.boards.map((board: any) => {
+      if (board.name === taskBoardFocus) {
+        board.columns.map((column: any) => {
+          if (!statusOptions.includes(column.columsNameAre)) {
+            console.log('does not exist')
+
+            setStatusOptions((prev: any) => [
+              ...prev,
+              column.columsNameAre,
+            ])
+          } else {
+            console.log('already exists')
+          }
+          handleMoreOptions()
+        })
+      }
+    })
+  }, [])
+
+  // this function will be called when options are created
+  // it will remove the options that are already in the statusOptions array
+  function handleMoreOptions() {
+    setStatusOptions((prev: any) => {
+      const newOptions = prev.filter(
+        (option: any, index: number) => prev.indexOf(option) === index
+      )
+      return newOptions
+    })
   }
+
+  function handleCreate(e: any) {
+    e.preventDefault()
+    setWantedNewTask(false)
+    setStatusOptions([])
+  }
+  console.log({ statusOptions })
+
   return (
     <div className="AddNewTask">
       <h1>Add New Task</h1>
-      <button>...</button>
       <form>
         <p>Task Title</p>
         <input type="text" name="taskTitle" id="taskTitle" />
@@ -36,9 +83,9 @@ function AddNewTask({ setWantedNewTask }: AddNewTaskProps) {
 
         <p>Status</p>
         <select>
-          <option value="">abc</option>
-          <option value="">abc</option>
-          <option value="">abc</option>
+          {statusOptions.map((option: any) => {
+            return <option value={option}>{option}</option>
+          })}
         </select>
 
         <br />

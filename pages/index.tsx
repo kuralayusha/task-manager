@@ -73,7 +73,11 @@ export default function Home() {
             />
           )}
           {wantedNewTask && (
-            <AddNewTask setWantedNewTask={setWantedNewTask} />
+            <AddNewTask
+              setWantedNewTask={setWantedNewTask}
+              taskBoardFocus={taskBoardFocus}
+              mainData={mainData}
+            />
           )}
           {wantedEditTask && (
             <EditTask
