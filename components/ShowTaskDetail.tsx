@@ -1,12 +1,21 @@
 type ShowTaskDetailProps = {
   setShowTaskDetails: any
   setWantedEditTask: any
+  taskDetailFocus: any
+  mainData: any
 }
 
 function ShowTaskDetail({
   setShowTaskDetails,
   setWantedEditTask,
+  taskDetailFocus,
+  mainData,
 }: ShowTaskDetailProps) {
+  // this page is for showing the details of a task
+  // first we need to render the task title
+  // then we need to render the task description
+  // then we need to render the tasks subtasks in a checklist
+  // then we need to render the current task status
   return (
     <div>
       <button
@@ -16,32 +25,37 @@ function ShowTaskDetail({
       >
         ...
       </button>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        Fugit explicabo, qui asperiores esse eos ipsa tempore. Ipsam
-        neque placeat modi.
-      </p>
-      <small>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-        aut fuga hic iure laborum, nostrum laudantium delectus quidem
-        quod ex vitae autem et at, vero in blanditiis cum
-        exercitationem! Amet.
-      </small>
-      <br />
-      <small>2of3</small>
-      <input type="checkbox" checked />
-      <label>Research competitor pricing and business models</label>
-      <input type="checkbox" />
-      <label>Research competitor pricing and business models</label>
-      <input type="checkbox" />
-      <label>Research competitor pricing and business models</label>
 
-      <label>Current Status</label>
-      <select>
-        <option value="">1</option>
-        <option value="">2</option>
-        <option value="">3</option>
-      </select>
+      <h1>{taskDetailFocus}</h1>
+      {mainData.boards.map((board: any) => {
+        return board.columns.map((column: any) => {
+          return column.tasks.map((task: any) => {
+            if (task.title === taskDetailFocus) {
+              return (
+                <div key={task.title}>
+                  <h3>{task.description}</h3>
+                  {task.subtasks.length >= 1 && (
+                    <p>
+                      {' '}
+                      (
+                      {
+                        task.subtasks.filter(
+                          (subtask: any) =>
+                            subtask.isCompleted === true
+                        ).length
+                      }{' '}
+                      of {task.subtasks.length})
+                    </p>
+                  )}
+                  {/* <h3>{task.status}</h3> */}
+                  {/* <h3>{task.subtasks}</h3> */}
+                </div>
+              )
+            }
+          })
+        })
+      })}
+
       <br />
       <button
         onClick={() => {

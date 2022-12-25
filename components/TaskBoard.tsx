@@ -10,6 +10,7 @@ type TaskBoardProps = {
   isSideBarHidden: boolean
   mainData: any
   setMainData: any
+  setTaskDetailFocus: any
 }
 
 function TaskBoard({
@@ -21,14 +22,15 @@ function TaskBoard({
   isSideBarHidden,
   mainData,
   setMainData,
+  setTaskDetailFocus,
 }: TaskBoardProps) {
-  console.log(mainData)
-  // setTimeout(() => {
-  //   console.log(
-  //     mainData.boards[0].columns[1].tasks[1].subtasks.length
-  //   )
-  // }, 5000)
+  function handleTaskDetailShow(e: any) {
+    setTaskDetailFocus(e)
+    setShowTaskDetails(true)
+    console.log(e)
+  }
 
+  console.log(mainData)
   return (
     <div className="task-board">
       <button
@@ -52,27 +54,30 @@ function TaskBoard({
             <div key={board.name}>
               <h3>{board.name}</h3>
               {board.columns.map((column: any) => (
-                <div key={column}>
+                <div key={column.columsNameAre}>
                   <h3>{column.columsNameAre}</h3>
                   {column.tasks.map((task: any) => (
                     <button
+                      id={task.title}
                       key={task.title}
-                      onClick={() => {
-                        setShowTaskDetails(task)
-                      }}
+                      onClick={(e) =>
+                        handleTaskDetailShow(task.title)
+                      }
                     >
                       <h3>{task.title}</h3>
                       {/* for each task calculate the subtask length and find wich of them are isComplited true then print it */}
-                      <p>
-                        {' '}
-                        {
-                          task.subtasks.filter(
-                            (subtask: any) =>
-                              subtask.isCompleted === true
-                          ).length
-                        }{' '}
-                        of {task.subtasks.length} substasks
-                      </p>
+                      {task.subtasks.length >= 1 && (
+                        <p>
+                          {' '}
+                          {
+                            task.subtasks.filter(
+                              (subtask: any) =>
+                                subtask.isCompleted === true
+                            ).length
+                          }{' '}
+                          of {task.subtasks.length} substasks
+                        </p>
+                      )}
                       {/* now calculate each subtasks that are isCompleted true */}
                     </button>
                   ))}

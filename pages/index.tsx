@@ -22,6 +22,7 @@ export default function Home() {
   const [isSideBarHidden, setIsSideBarHidden] =
     useState<boolean>(false)
   const [taskBoardFocus, setTaskBoardFocus] = useState<string>('')
+  const [taskDetailFocus, setTaskDetailFocus] = useState<string>('')
 
   const [wantedNewTask, setWantedNewTask] = useState<boolean>(false)
   const [wantedEditBoard, setWantedEditBoard] =
@@ -49,6 +50,7 @@ export default function Home() {
   // console.log(taskBoardFocus)
   // console.log(tasksData)
   // console.log(isSideBarHidden)
+  console.log({ taskDetailFocus })
 
   return (
     <>
@@ -70,6 +72,8 @@ export default function Home() {
             <ShowTaskDetail
               setShowTaskDetails={setShowTaskDetails}
               setWantedEditTask={setWantedEditTask}
+              taskDetailFocus={taskDetailFocus}
+              mainData={mainData}
             />
           )}
           {wantedNewTask && (
@@ -137,6 +141,7 @@ export default function Home() {
             isSideBarHidden={isSideBarHidden}
             mainData={mainData}
             setMainData={setMainData}
+            setTaskDetailFocus={setTaskDetailFocus}
           />
         </div>
       </Layout>
