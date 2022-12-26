@@ -47,10 +47,12 @@ export default function Home() {
     }
   }, [])
 
-  // console.log(taskBoardFocus)
+  // source destination
+
+  console.log(taskBoardFocus)
   // console.log(tasksData)
   // console.log(isSideBarHidden)
-  // console.log({ taskDetailFocus })
+  console.log({ taskDetailFocus })
   console.log(mainData)
 
   return (
@@ -90,6 +92,10 @@ export default function Home() {
             <EditTask
               setWantedEditTask={setWantedEditTask}
               setWantedDeleteTask={setWantedDeleteTask}
+              taskDetailFocus={taskDetailFocus}
+              mainData={mainData}
+              setMainData={setMainData}
+              taskBoardFocus={taskBoardFocus}
             />
           )}
           {wantedDeleteTask && (

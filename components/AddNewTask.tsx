@@ -158,6 +158,7 @@ function AddNewTask({
       <div>
         <p>Task Title</p>
         <input
+          required
           type="text"
           name="taskTitle"
           id="taskTitle"
