@@ -1,8 +1,12 @@
+import { useEffect, useState } from 'react'
+import { render } from 'react-dom'
+
 type ShowTaskDetailProps = {
   setShowTaskDetails: any
   setWantedEditTask: any
   taskDetailFocus: any
   mainData: any
+  setMainData: any
 }
 
 function ShowTaskDetail({
@@ -10,24 +14,64 @@ function ShowTaskDetail({
   setWantedEditTask,
   taskDetailFocus,
   mainData,
+  setMainData,
 }: ShowTaskDetailProps) {
+  const [a, render] = useState<boolean>(true)
   // this page is for showing the details of a task
   // first we need to render the task title
   // then we need to render the task description
   // then we need to render the tasks subtasks in a checklist
   // then we need to render the current task status
+
+  // when user toggles on the checkbox we need to update the subtask isCompleted value and change the task status
+  // useEffect(() => {
+  //   const data = localStorage.getItem('mainData')
+  //   if (data) {
+  //     setMainData(JSON.parse(data))
+  //   }
+  // }, [])
+
+  function handleCheckboxClick(e: any) {
+    const newData = mainData?.boards?.map((board: any) => {
+      return board.columns.map((column: any) => {
+        return column.tasks.map((task: any) => {
+          if (task.title === taskDetailFocus) {
+            return task.subtasks.map((subtask: any) => {
+              if (subtask.subtasksName === e.target.id) {
+                subtask.isCompleted = !subtask.isCompleted
+              }
+              return subtask
+            })
+          }
+          return task
+        })
+      })
+    })
+    render(!a)
+    console.log(e.target.id)
+  }
+
+  function handleSaveChanges() {
+    localStorage.setItem('mainData', JSON.stringify(mainData))
+    setShowTaskDetails(false)
+  }
+
+  function handleSettings() {
+    setWantedEditTask(taskDetailFocus)
+    setShowTaskDetails(false)
+  }
   return (
     <div>
       <button
         onClick={() => {
-          setWantedEditTask(true)
+          handleSettings()
         }}
       >
         ...
       </button>
 
       <h1>{taskDetailFocus}</h1>
-      {mainData.boards.map((board: any) => {
+      {mainData?.boards?.map((board: any) => {
         return board.columns.map((column: any) => {
           return column.tasks.map((task: any) => {
             if (task.title === taskDetailFocus) {
@@ -47,8 +91,34 @@ function ShowTaskDetail({
                       of {task.subtasks.length})
                     </p>
                   )}
-                  {/* <h3>{task.status}</h3> */}
-                  {/* <h3>{task.subtasks}</h3> */}
+                  {/* we need to render the tasks subtasks in a checklist then we need to render the current task status */}
+
+                  {task.subtasks.length >= 1 && (
+                    <ul>
+                      {task.subtasks.map((subtask: any) => {
+                        return (
+                          <li key={subtask.title}>
+                            <input
+                              type="checkbox"
+                              checked={subtask.isCompleted}
+                              // className={
+                              //   subtask.isCompleted
+                              //     ? 'checkbox active'
+                              //     : 'checkbox'
+                              // }
+                              id={subtask.subtasksName}
+                              onChange={(e) => {
+                                handleCheckboxClick(e)
+                              }}
+                            />
+                            {subtask.subtasksName}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  )}
+                  <p>cuurent status</p>
+                  <div>{task.status}</div>
                 </div>
               )
             }
@@ -57,11 +127,7 @@ function ShowTaskDetail({
       })}
 
       <br />
-      <button
-        onClick={() => {
-          setShowTaskDetails(false)
-        }}
-      >
+      <button onClick={() => handleSaveChanges()}>
         Save Changes
       </button>
     </div>

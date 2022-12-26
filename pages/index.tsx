@@ -50,7 +50,8 @@ export default function Home() {
   // console.log(taskBoardFocus)
   // console.log(tasksData)
   // console.log(isSideBarHidden)
-  console.log({ taskDetailFocus })
+  // console.log({ taskDetailFocus })
+  console.log(mainData)
 
   return (
     <>
@@ -74,6 +75,7 @@ export default function Home() {
               setWantedEditTask={setWantedEditTask}
               taskDetailFocus={taskDetailFocus}
               mainData={mainData}
+              setMainData={setMainData}
             />
           )}
           {wantedNewTask && (

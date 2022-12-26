@@ -9,7 +9,7 @@ function EditTask({
 }: TaskBoardProps) {
   return (
     <div className="AddNewTask">
-      <h1>Add New Task</h1>
+      <h1>Edit New Task</h1>
 
       <form>
         <p>Task Title</p>
