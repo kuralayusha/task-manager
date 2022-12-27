@@ -24,13 +24,17 @@ function TaskBoard({
   setMainData,
   setTaskDetailFocus,
 }: TaskBoardProps) {
+  const [a, render] = useState(false)
   function handleTaskDetailShow(e: any) {
     setTaskDetailFocus(e)
     setShowTaskDetails(true)
     console.log(e)
   }
 
-  console.log(mainData)
+  useEffect(() => {
+    render(!a)
+  }, [mainData])
+  // console.log(mainData)
   return (
     <div className="task-board">
       <button

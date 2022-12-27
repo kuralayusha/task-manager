@@ -15,6 +15,12 @@ function TopBar({
 }: TopBarProps) {
   const boardTitle = taskBoardFocus
 
+  function handleBoardSettings() {
+    if (taskBoardFocus !== '') {
+      setWantedEditBoard(taskBoardFocus)
+    }
+  }
+
   function handleAddNewTask() {
     setWantedNewTask(true)
   }
@@ -28,13 +34,7 @@ function TopBar({
         <h1 className="board-title">{boardTitle}</h1>
         <div>
           <button onClick={handleAddNewTask}>+ Add New Task</button>
-          <button
-            onClick={() => {
-              setWantedEditBoard(true)
-            }}
-          >
-            ...
-          </button>
+          <button onClick={handleBoardSettings}>...</button>
         </div>
         <div />
       </div>

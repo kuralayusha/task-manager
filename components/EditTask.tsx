@@ -129,14 +129,14 @@ function EditTask({
           { subtasksName, isCompleted: false },
         ],
       })
-      console.log({ subtasksArray })
+      // console.log({ subtasksArray })
 
       return newTaskData
     })
 
     setSubtasksName('')
     // setCounter(counter + 1)
-    console.log({ subtasksArray })
+    // console.log({ subtasksArray })
   }
 
   function handleSaveChanges() {
@@ -185,93 +185,15 @@ function EditTask({
     setWantedEditTask(false)
   }
 
+  function openDeleteOption() {
+    setWantedEditTask(false)
+    setWantedDeleteTask(true)
+  }
+
   return (
     <div>
       <h1>Edit Task</h1>
 
-      {/* {mainData.boards.map((board: any) => {
-        return board.columns.map((column: any) => {
-          return column.tasks.map((task: any) => {
-            if (task.title === taskDetailFocus) {
-              return (
-                <div key={task.title}>
-                  <label>title</label>
-                  <input
-                    type="text"
-                    id="taskTitle"
-                    defaultValue={task.title}
-                    onChange={(e) => {
-                      handleTitleChange(e)
-                    }}
-                  />
-                  <br />
-                  <label>description</label>
-                  <input
-                    type="text"
-                    id="taskDescription"
-                    defaultValue={task.description}
-                    onChange={(e) => {
-                      handleDescriptionChange(e)
-                    }}
-                  />
-                  <br />
-                  <label>task Subtasks</label>
-
-                  {task.subtasks.length >= 1 && (
-                    <ul>
-                      {task.subtasks.map((subtask: any) => {
-                        return (
-                          <li key={subtask.title}>
-                            <input
-                              type="input"
-                              checked={subtask.isCompleted}
-                              id={subtask.subtasksName}
-                              defaultValue={subtask.subtasksName}
-                              // onChange={(e) => {
-                              //   handleSubtaskChange
-                              // }}
-                            />
-                            <button
-                              value={subtask.subtasksName}
-                              onClick={(e) => {
-                                handleSubtaskDelete(e)
-                              }}
-                            >
-                              X
-                            </button>
-                          </li>
-                        )
-                      })}
-
-                      {Array.from(Array(counter)).map((c, index) => {
-                        return (
-                          <div key={c}>
-                            {' '}
-                            <input
-                              // value={columsNameAre}
-                              placeholder="Subtask Name"
-                              type="text"
-                              onChange={(e) => handleSubtaskChange(e)}
-                            ></input>
-                          </div>
-                        )
-                      })}
-                    </ul>
-                  )}
-                  <button onClick={handleSubtaskAdd}>
-                    Add SubTask
-                  </button>
-                  <br />
-
-                  <button onClick={handleSaveChanges}>
-                    Save Changes
-                  </button>
-                </div>
-              )
-            }
-          })
-        })
-      })} */}
       {newTaskData.title !== '' && (
         <div>
           <label>title</label>
@@ -303,15 +225,16 @@ function EditTask({
                   id={subtask.subtasksName}
                   key={subtask.subtasksName}
                 >
-                  <input
-                    type="input"
-                    checked={subtask.isCompleted}
+                  <button
+                    // checked={subtask.isCompleted}
                     id={subtask.subtasksName}
                     defaultValue={subtask.subtasksName}
                     // onChange={(e) => {
                     //   handleSubtaskChange
                     // }}
-                  />
+                  >
+                    {subtask.subtasksName}
+                  </button>
                   <button
                     value={subtask.subtasksName}
                     onClick={(e) => {
@@ -348,6 +271,7 @@ function EditTask({
           <br />
 
           <button onClick={handleSaveChanges}>Save Changes</button>
+          <button onClick={openDeleteOption}>Delete This Task</button>
         </div>
       )}
     </div>

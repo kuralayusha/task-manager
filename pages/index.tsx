@@ -1,3 +1,5 @@
+// TODO: if there is no board focuse u cant click to the add new tasks button
+
 import useLocalStorage from '../hooks/useLocalStorage'
 
 import Layout from '../components/Layout'
@@ -40,6 +42,15 @@ export default function Home() {
     boards: [],
   })
 
+  const [newBoardData, setNewBoardData] = useState<any>({
+    boards: [
+      {
+        name: '',
+        columns: [{ columsNameAre: [], tasks: [] }],
+      },
+    ],
+  })
+
   useEffect(() => {
     const data = localStorage.getItem('mainData')
     if (data) {
@@ -47,13 +58,27 @@ export default function Home() {
     }
   }, [])
 
+  useEffect(() => {
+    mainData.boards.map((board: any) => {
+      if (board.name === taskBoardFocus) {
+        setNewBoardData((prev: any) => {
+          const newBoardData = prev
+          newBoardData.boards[0].name = board.name
+          newBoardData.boards[0].columns = board.columns
+          return newBoardData
+        })
+      }
+    })
+    console.log('güncelledim')
+  }, [taskBoardFocus])
+
   // source destination
 
-  console.log(taskBoardFocus)
+  // console.log(taskBoardFocus)
   // console.log(tasksData)
   // console.log(isSideBarHidden)
-  console.log({ taskDetailFocus })
-  console.log(mainData)
+  // console.log({ taskDetailFocus })
+  // console.log(mainData)
 
   return (
     <>
@@ -99,7 +124,13 @@ export default function Home() {
             />
           )}
           {wantedDeleteTask && (
-            <DeleteTask setWantedDeleteTask={setWantedDeleteTask} />
+            <DeleteTask
+              setWantedDeleteTask={setWantedDeleteTask}
+              setMainData={setMainData}
+              taskDetailFocus={taskDetailFocus}
+              mainData={mainData}
+              setTaskDetailFocus={setTaskDetailFocus}
+            />
           )}
         </>
         <>
@@ -116,11 +147,20 @@ export default function Home() {
             <EditBoard
               setWantedEditBoard={setWantedEditBoard}
               setWantedDeleteBoard={setWantedDeleteBoard}
+              taskBoardFocus={taskBoardFocus}
+              mainData={mainData}
+              setMainData={setMainData}
+              setNewBoardData={setNewBoardData}
+              newBoardData={newBoardData}
             />
           )}
           {wantedDeleteBoard && (
             <DeleteBoard
               setWantedDeleteBoard={setWantedDeleteBoard}
+              setMainData={setMainData}
+              mainData={mainData}
+              taskBoardFocus={taskBoardFocus}
+              setTaskBoardFocus={setTaskBoardFocus}
             />
           )}
         </>
