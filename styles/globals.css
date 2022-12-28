@@ -25,11 +25,6 @@ main {
     display: none;
 }
 
-
-
-
-
-
 .task-board {
     background-color: rgb(255, 208, 208);
     width: 100%;
@@ -37,18 +32,23 @@ main {
 
 .sidebar {
     background-color: rgb(202, 255, 255);
-    width: 100%;
+    /* width: 100%; */
 }
 
 .top-bar {
     background-color: rgb(255, 255, 202);
-    width: 100%;
+    /* width: 100%; */
 }
 
 .layout {
     background-color: rgb(182, 182, 182);
-    width: 100%;
+    /* width: 100%; */
 }
+
+
+
+
+
 
 .checkbox {
     background-color: rgb(255, 255, 255);

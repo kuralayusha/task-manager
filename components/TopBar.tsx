@@ -1,4 +1,6 @@
 import AddNewTask from './AddNewTask'
+import { LogoMobile } from './assets'
+// import LogoMobile from './assets/logo-mobile.svg'
 
 type TopBarProps = {
   tasksData: any
@@ -28,7 +30,9 @@ function TopBar({
   return (
     <div className="top-bar">
       <div>
-        <div className="logo">TASK LOGO</div>
+        <div className="app--logo">
+          <LogoMobile />
+        </div>
       </div>
       <div>
         <h1 className="board-title">{boardTitle}</h1>
