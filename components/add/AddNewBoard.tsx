@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import useLocalStorage from '../hooks/useLocalStorage'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
 type AddNewBoardProps = {
   setWantedNewBoard: any

@@ -1,6 +1,6 @@
-import AddNewTask from './AddNewTask'
-import { LogoMobile } from './assets'
-// import LogoMobile from './assets/logo-mobile.svg'
+import Image from 'next/image'
+
+// import LogoMobile from '../public/assets/logo-mobile.svg'
 
 type TopBarProps = {
   tasksData: any
@@ -31,7 +31,12 @@ function TopBar({
     <div className="top-bar">
       <div>
         <div className="app--logo">
-          <LogoMobile />
+          <Image
+            src="/assets/logo-mobile.svg"
+            width={24}
+            height={25}
+            alt="ananin logo"
+          />
         </div>
       </div>
       <div>
