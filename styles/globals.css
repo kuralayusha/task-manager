@@ -325,9 +325,187 @@ main {
     margin-top: 8px;
 }
 
+/* TASK DETAİLS */
+/* TASK DETAİLS */
+/* TASK DETAİLS */
+/* TASK DETAİLS */
+/* TASK DETAİLS */
+
+/* .task-details::before {
+    content: "";
+    background-color: #00011273;
+    position: absolute;
+    top: -85px;
+    left: 0;
+    width: 100vw;
+    height: 300%;
+    z-index: 1;
+} */
+
+.task-details {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 30px rgb(54, 78, 126);
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 300px;
+
+    top: 120px;
+    left: 50%;
+
+    border-radius: 6px;
+
+    margin-left: -150px;
+    padding: 24px;
+}
 
 
+.top--detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
+    width: 100%;
+}
+
+.top--detail h1 {
+    color: #000112;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.top--detail button {
+    background-color: transparent;
+    border: none;
+}
+
+.bottom--details {
+    margin-top: 24px;
+}
+
+.bottom--details h3 {
+    color: #828FA3;
+    
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 23px;
+}
+
+.subtasks {
+    color: #828FA3;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+
+    margin-top: 24px;
+}
+
+.bottom--details ul {
+    list-style: none;
+}
+
+.bottom--details ul li {
+    background-color: #F4F7FD;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 252px;
+
+    margin-top: 8px;
+    padding: 14.5px 8px;
+
+    border-radius: 4px;
+}
+
+.checkbox {
+    background-color: rgb(0, 0, 0);
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.checkbox.active {
+    background-color: rgba(196, 40, 40, 0.562);
+    text-decoration: line-through;
+}
+
+.done {
+    color: #000112;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration-line: line-through;
+
+    mix-blend-mode: normal;
+    opacity: 0.5;
+}
+
+.not-done {
+    color: #000112;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+/* .detail--status {
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 270px;
+    height: 40px;
+
+    margin-top: 8px;
+
+    border: 1px solid #00011256;
+    border-radius: 4px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 23px;
+    
+    color: #000112;
+} */
+
+.save--changes {
+    background: #635FC7;
+
+    width: 252px;
+    height: 40px;
+
+    margin-top: 24px;
+    
+    border: none;
+    border-radius: 20px;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 23px;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
 
 
 
@@ -352,25 +530,19 @@ main {
     /* width: 100%; */
 }
 
+.task-details h4 {
+    color: #828FA3;
 
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
 
-
-
-
-.checkbox {
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    height: 20px;
-    margin: 3px;
-    padding-left: 20px;
-    cursor: pointer;
+    margin-top: 24px;
 }
 
-.checkbox.active {
-    background-color: rgba(255, 255, 255, 0.562);
-    width: 100%;
-    height: 20px;
-    margin: 3px;
-    padding-left: 20px;
-    text-decoration: line-through;
-}
+
+
+
+
+

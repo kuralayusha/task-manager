@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 type ShowTaskDetailProps = {
   setShowTaskDetails: any
@@ -60,27 +61,32 @@ function ShowTaskDetail({
     setShowTaskDetails(false)
   }
   return (
-    <div>
-      <button
-        onClick={() => {
-          handleSettings()
-        }}
-      >
-        ...
-      </button>
-
-      <h1>{taskDetailFocus}</h1>
+    <div className="task-details">
+      <div className="top--detail">
+        <h1>{taskDetailFocus}</h1>
+        <button
+          onClick={() => {
+            handleSettings()
+          }}
+        >
+          <Image
+            src="/assets/icon-vertical-ellipsis.svg"
+            width={3.69}
+            height={16}
+            alt="settings"
+          />
+        </button>
+      </div>
       {mainData?.boards?.map((board: any) => {
         return board.columns.map((column: any) => {
           return column.tasks.map((task: any) => {
             if (task.title === taskDetailFocus) {
               return (
-                <div key={task.title}>
+                <div className="bottom--details" key={task.title}>
                   <h3>{task.description}</h3>
                   {task.subtasks.length >= 1 && (
-                    <p>
-                      {' '}
-                      (
+                    <p className="subtasks">
+                      Subtasks (
                       {
                         task.subtasks.filter(
                           (subtask: any) =>
@@ -100,33 +106,42 @@ function ShowTaskDetail({
                             <input
                               type="checkbox"
                               checked={subtask.isCompleted}
-                              // className={
-                              //   subtask.isCompleted
-                              //     ? 'checkbox active'
-                              //     : 'checkbox'
-                              // }
+                              className={
+                                subtask.isCompleted
+                                  ? 'checkbox active'
+                                  : 'checkbox'
+                              }
                               id={subtask.subtasksName}
                               onChange={(e) => {
                                 handleCheckboxClick(e)
                               }}
-                            />
-                            {subtask.subtasksName}
+                            ></input>
+                            <p
+                              className={
+                                subtask.isCompleted
+                                  ? 'done'
+                                  : 'not-done'
+                              }
+                            >
+                              {subtask.subtasksName}
+                            </p>
                           </li>
                         )
                       })}
                     </ul>
                   )}
-                  <p>cuurent status</p>
-                  <div>{task.status}</div>
+                  {/* <h4>Cuurent Status</h4>
+                  <div className="detail--status">{task.status}</div> */}
                 </div>
               )
             }
           })
         })
       })}
-
-      <br />
-      <button onClick={() => handleSaveChanges()}>
+      <button
+        className="save--changes"
+        onClick={() => handleSaveChanges()}
+      >
         Save Changes
       </button>
     </div>
