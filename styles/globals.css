@@ -5,6 +5,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* overflow: none; */
+}
+
+body {
+    overflow: hidden;
 }
 
 main {
@@ -345,7 +350,7 @@ main {
 .task-details {
     background: #FFFFFF;
     box-shadow: 0px 5px 30px rgb(54, 78, 126);
-    position: absolute;
+    position: fixed;
 
     display: flex;
     flex-direction: column;
@@ -353,7 +358,7 @@ main {
 
     width: 300px;
 
-    top: 120px;
+    top: 20vh;
     left: 50%;
 
     border-radius: 6px;
@@ -507,6 +512,239 @@ main {
     color: #FFFFFF;
 }
 
+/* Add New Task + Edit Task */
+/* Add New Task + Edit Task */
+/* Add New Task + Edit Task */
+/* Add New Task + Edit Task */
+/* Add New Task + Edit Task */
+
+.about--task {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 30px rgb(54, 78, 126);
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 315px;
+    max-height: 650px;
+
+    top: 70px;
+    left: 50%;
+
+    border-radius: 6px;
+
+    margin-left: -157.5px;
+    padding: 24px;
+    overflow-y: scroll;
+
+}
+
+.task--h1 {
+    color: #000112;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+}
+
+.container-for--task p {
+    color: #828FA3;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+
+    margin-top: 24px;
+}
+
+.task--title {
+    background: #FFFFFF;
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    border-radius: 4px;
+
+    width: 252px;
+    height: 40px;
+
+    padding: 0 16px;
+    margin-top: 8px;
+}
+
+.task--title::placeholder {
+    color: #000112;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 23px;
+
+    mix-blend-mode: normal;
+    opacity: 0.25;
+}
+
+.task--description {
+    background: #FFFFFF;
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    border-radius: 4px;
+
+    width: 252px;
+    height: 40px;
+
+    padding: 0 16px;
+    margin-top: 8px;
+    /* inline-size: 150px; */
+}
+
+.task--description::placeholder {
+    overflow-wrap: break-word;
+    /* background-color: #f07a7a; */
+    color: #000112;
+    width: 220px;
+    height: 50px;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 23px;
+
+    mix-blend-mode: normal;
+    opacity: 0.25;
+}
+
+.task--subtasks {
+    background: #FFFFFF;
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    border-radius: 4px;
+
+    width: 252px;
+    height: 40px;
+
+    padding: 0 16px;
+    margin-top: 8px;
+}
+
+.task--create--subtask--btn {
+    background: rgba(99, 95, 199, 0.1);
+    color: #635FC7;
+
+    width: 252px;
+    height: 40px;
+
+    margin-top: 12px;
+
+    border: none;
+    border-radius: 20px;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 23px;
+
+    text-align: center;
+
+}
+
+.task-status--select {
+    background: #FFFFFF;
+
+    width: 252px;
+    height: 40px;
+
+    margin-top: 8px;
+
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    border-radius: 4px;
+}
+
+.task-create--btn {
+    background: #635FC7;
+    color: #FFFFFF;
+
+    width: 252px;
+    height: 40px;
+
+    margin-top: 8px;
+
+    border: none;
+    border-radius: 20px;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 23px;
+
+    text-align: center;
+
+
+}
+
+/* Edit Task */
+/* Edit Task */
+/* Edit Task */
+
+.container-for--task ul {
+    list-style: none;
+}
+
+.container-for--task ul li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.subtask-name--btn {
+    background: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 221px;
+    height: 40px;
+
+    margin-top: 8px;
+    margin-bottom: 4px;
+
+    padding: 0 15px;
+
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    border-radius: 4px;
+}
+
+.cross--btn {
+    background-color: #fff;
+    color: #828FA3;
+    border: none;
+
+    width: 30px;
+    height: 30px;
+    position: relative;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14.85px;
+    line-height: 23px;
+
+    cursor: pointer;
+}
+
+.task-create--btn.add {
+    background: rgba(99, 95, 199, 0.1);
+    color: #635FC7;
+}
+
+.task-create--btn.delete {
+    background: #EA5555;
+    color: #fff;
+}
 
 
 

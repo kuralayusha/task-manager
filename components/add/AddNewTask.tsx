@@ -153,23 +153,27 @@ function AddNewTask({
   // console.log(taskStatus)
   // console.log({ statusOptions })
   return (
-    <div className="AddNewTask">
-      <h1>Add New Task</h1>
-      <div>
+    <div className="about--task">
+      <h1 className="task--h1">Add New Task</h1>
+      <div className="container-for--task">
         <p>Task Title</p>
         <input
+          className="task--title"
           required
           type="text"
           name="taskTitle"
           id="taskTitle"
+          placeholder="e.g. Take coffee break"
           onChange={(e) => handleTaskTitleChange(e)}
         />
 
         <p>Task Description</p>
         <input
+          className="task--description"
           type="text"
           name="taskDescription"
           id="taskDescription"
+          placeholder="e.g. It's always good to take a break."
           onChange={(e) => handleTaskDescriptionChange(e)}
         />
 
@@ -177,8 +181,9 @@ function AddNewTask({
         {Array.from(Array(counter)).map((c, index) => {
           return (
             <div key={c}>
-              <br />{' '}
+              {' '}
               <input
+                className="task--subtasks"
                 // value={columsNameAre}
                 type="text"
                 onChange={(e) => handleSubtaskNameChange(e)}
@@ -187,10 +192,18 @@ function AddNewTask({
           )
         })}
 
-        <button onClick={handleAddSubtask}>+ Add This Subtask</button>
+        <button
+          className="task--create--subtask--btn"
+          onClick={handleAddSubtask}
+        >
+          + Add This Subtask
+        </button>
 
         <p>Status</p>
-        <select onChange={handleStatusChange}>
+        <select
+          className="task-status--select"
+          onChange={handleStatusChange}
+        >
           <option value="">Select</option>
           {statusOptions.map((option: any) => {
             return <option value={option}>{option}</option>
@@ -198,7 +211,12 @@ function AddNewTask({
         </select>
 
         <br />
-        <button onClick={handleCreateTask}>Create Task</button>
+        <button
+          className="task-create--btn"
+          onClick={handleCreateTask}
+        >
+          Create Task
+        </button>
       </div>
     </div>
   )

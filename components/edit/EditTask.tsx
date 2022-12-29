@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 type TaskBoardProps = {
   setWantedEditTask: any
@@ -191,32 +192,36 @@ function EditTask({
   }
 
   return (
-    <div>
-      <h1>Edit Task</h1>
+    <div className="about--task">
+      <h1 className="task--h1">Edit Task</h1>
 
       {newTaskData.title !== '' && (
-        <div>
-          <label>title</label>
+        <div className="container-for--task">
+          <p>Task Title</p>
           <input
+            className="task--title"
             type="text"
             id="taskTitle"
+            placeholder="e.g. Take coffee break"
             defaultValue={newTaskData.title}
             onChange={(e) => {
               handleTitleChange(e)
             }}
           />
           <br />
-          <label>description</label>
+          <p>Task Description</p>
           <input
+            className="task--description"
             type="text"
             id="taskDescription"
+            placeholder="e.g. It's always good to take a break."
             defaultValue={newTaskData.description}
             onChange={(e) => {
               handleDescriptionChange(e)
             }}
           />
           <br />
-          <label>task Subtasks</label>
+          <p>Task Subtasks</p>
 
           <ul>
             {newTaskData.subtasks.map((subtask: any) => {
@@ -226,6 +231,7 @@ function EditTask({
                   key={subtask.subtasksName}
                 >
                   <button
+                    className="subtask-name--btn"
                     // checked={subtask.isCompleted}
                     id={subtask.subtasksName}
                     defaultValue={subtask.subtasksName}
@@ -236,6 +242,7 @@ function EditTask({
                     {subtask.subtasksName}
                   </button>
                   <button
+                    className="cross--btn"
                     value={subtask.subtasksName}
                     onClick={(e) => {
                       handleSubtaskDelete(e)
@@ -252,6 +259,7 @@ function EditTask({
                   {' '}
                   <input
                     // value={columsNameAre}
+                    className="subtask-name--btn"
                     placeholder="Subtask Name"
                     type="text"
                     onChange={(e) => handleSubtaskChange(e)}
@@ -262,16 +270,27 @@ function EditTask({
           </ul>
 
           <button
+            className="task-create--btn add"
             onClick={(e) => {
               handleSubtaskAdd(e)
             }}
           >
-            Add SubTask
+            + Add This Subtask
           </button>
           <br />
 
-          <button onClick={handleSaveChanges}>Save Changes</button>
-          <button onClick={openDeleteOption}>Delete This Task</button>
+          <button
+            className="task-create--btn save"
+            onClick={handleSaveChanges}
+          >
+            Save Changes
+          </button>
+          <button
+            className="task-create--btn delete"
+            onClick={openDeleteOption}
+          >
+            Delete This Task
+          </button>
         </div>
       )}
     </div>
