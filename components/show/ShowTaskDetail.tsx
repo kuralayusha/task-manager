@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { render } from 'react-dom'
 
 type ShowTaskDetailProps = {
   setShowTaskDetails: any
