@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import TopBar from '../components/inPage/TopBar'
 import TaskBoard from '../components/inPage/TaskBoard'
 import SideBar from '../components/inPage/SideBar'
+import MobileSideBar from '../components/inPage/MobileSideBar'
 import AddNewTask from '../components/add/AddNewTask'
 import EditBoard from '../components/edit/EditBoard'
 import EditTask from '../components/edit/EditTask'
@@ -23,6 +24,8 @@ export default function Home() {
   const [isDark, setIsDark] = useState<boolean>(false)
   const [isSideBarHidden, setIsSideBarHidden] =
     useState<boolean>(false)
+  const [isMobileSideBarHidden, setIsMobileSideBarHidden] =
+    useState<boolean>(true)
   const [taskBoardFocus, setTaskBoardFocus] = useState<string>('')
   const [taskDetailFocus, setTaskDetailFocus] = useState<string>('')
 
@@ -169,6 +172,8 @@ export default function Home() {
           taskBoardFocus={taskBoardFocus}
           setWantedNewTask={setWantedNewTask}
           setWantedEditBoard={setWantedEditBoard}
+          setIsMobileSideBarHidden={setIsMobileSideBarHidden}
+          isMobileSideBarHidden={isMobileSideBarHidden}
         />
         <div className="container">
           <SideBar
@@ -176,6 +181,15 @@ export default function Home() {
             setTaskBoardFocus={setTaskBoardFocus}
             setIsSideBarHidden={setIsSideBarHidden}
             isSideBarHidden={isSideBarHidden}
+            setWantedNewBoard={setWantedNewBoard}
+            mainData={mainData}
+            setMainData={setMainData}
+          />
+          <MobileSideBar
+            tasksData={tasksData}
+            setTaskBoardFocus={setTaskBoardFocus}
+            setIsMobileSideBarHidden={setIsMobileSideBarHidden}
+            isMobileSideBarHidden={isMobileSideBarHidden}
             setWantedNewBoard={setWantedNewBoard}
             mainData={mainData}
             setMainData={setMainData}

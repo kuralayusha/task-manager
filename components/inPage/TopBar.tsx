@@ -7,6 +7,8 @@ type TopBarProps = {
   taskBoardFocus: any
   setWantedNewTask: any
   setWantedEditBoard: any
+  setIsMobileSideBarHidden: any
+  isMobileSideBarHidden: any
 }
 
 function TopBar({
@@ -14,6 +16,8 @@ function TopBar({
   taskBoardFocus,
   setWantedNewTask,
   setWantedEditBoard,
+  setIsMobileSideBarHidden,
+  isMobileSideBarHidden,
 }: TopBarProps) {
   const boardTitle = taskBoardFocus
 
@@ -29,21 +33,66 @@ function TopBar({
 
   return (
     <div className="top-bar">
-      <div>
-        <div className="app--logo">
-          <Image
-            src="/assets/logo-mobile.svg"
-            width={24}
-            height={25}
-            alt="ananin logo"
-          />
-        </div>
+      <div className="app--logo">
+        <Image
+          src="/assets/logo-mobile.svg"
+          width={24}
+          height={25}
+          alt="logo"
+        />
       </div>
-      <div>
-        <h1 className="board-title">{boardTitle}</h1>
-        <div>
-          <button onClick={handleAddNewTask}>+ Add New Task</button>
-          <button onClick={handleBoardSettings}>...</button>
+      <h1 className="board-title">
+        <p>{boardTitle}</p>
+        {isMobileSideBarHidden ? (
+          <button
+            className="btn-bar"
+            onClick={() => setIsMobileSideBarHidden(false)}
+          >
+            <Image
+              src="/assets/icon-chevron-down.svg"
+              width={10}
+              height={8}
+              alt="arrow"
+            />
+          </button>
+        ) : (
+          <button
+            className="btn-bar"
+            onClick={() => setIsMobileSideBarHidden(true)}
+          >
+            <Image
+              src="/assets/icon-chevron-up.svg"
+              width={10}
+              height={8}
+              alt="arrow"
+            />
+          </button>
+        )}
+      </h1>
+      <div className="top--bar--content">
+        <div className="top--bar--btns">
+          <button
+            className="add-task--btn"
+            onClick={handleAddNewTask}
+          >
+            <Image
+              src="/assets/icon-add-task-mobile.svg"
+              width={16}
+              height={16}
+              alt="plus"
+            />
+          </button>
+          <button
+            className="settings--btn"
+            onClick={handleBoardSettings}
+          >
+            <Image
+              src="/assets/icon-vertical-ellipsis.svg"
+              width={3.69}
+              height={16}
+              alt="settings"
+            />
+          </button>
         </div>
         <div />
       </div>

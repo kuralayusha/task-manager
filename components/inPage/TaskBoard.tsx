@@ -38,6 +38,7 @@ function TaskBoard({
   return (
     <div className="task-board">
       <button
+        className="big-screen--sidebar--button"
         style={
           isSideBarHidden
             ? { background: 'fff' }
@@ -55,13 +56,15 @@ function TaskBoard({
       {mainData.boards.map((board: any) => {
         if (board.name === taskBoardFocus) {
           return (
-            <div key={board.name}>
-              <h3>{board.name}</h3>
+            <div className="task-board--container" key={board.name}>
               {board.columns.map((column: any) => (
-                <div key={column.columsNameAre}>
-                  <h3>{column.columsNameAre}</h3>
+                <div className="column" key={column.columsNameAre}>
+                  <h3 className="column--name">
+                    {column.columsNameAre} ({column.tasks.length})
+                  </h3>
                   {column.tasks.map((task: any) => (
                     <button
+                      className="tasks"
                       id={task.title}
                       key={task.title}
                       onClick={(e) =>

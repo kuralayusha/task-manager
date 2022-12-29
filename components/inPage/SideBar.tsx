@@ -23,9 +23,6 @@ function SideBar({
     <div className={isSideBarHidden ? 'sidebar hidden' : 'sidebar'}>
       <div className="taskSide">
         <h3>All Boards ({mainData.boards.length})</h3>
-        {/* TODO: we have to map all boards 
-        and take them titles then for each title there
-        shoul a button. */}
         {mainData.boards.map((board: any) => (
           <button
             key={board.name}
