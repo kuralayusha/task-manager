@@ -28,7 +28,7 @@ function AddNewTask({
   const [subtasksName, setSubtasksName] = useState<string>('')
   const [subtasksArray, setSubtasksArray] = useState<any>([])
   const [taskStatus, setTaskStatus] = useState<string>('')
-  const [newTaskData, setNewTaskData] = useState<object>({
+  const [newTaskData, setNewTaskData] = useState<any>({
     title: '',
     description: '',
     subtasks: [],
@@ -127,18 +127,23 @@ function AddNewTask({
   }
 
   //when user clicks on create task, the task should be setted to the mainData.boards.columns.tasks
+  // if there not a task name or a task status, it will not create a new task
   function handleCreateTask() {
-    mainData.boards.map((board: any) => {
-      if (board.name === taskBoardFocus) {
-        board.columns.map((column: any) => {
-          if (column.columsNameAre === taskStatus) {
-            console.log(column)
+    if (newTaskData.title !== '' && newTaskData.status !== '') {
+      mainData.boards.map((board: any) => {
+        if (board.name === taskBoardFocus) {
+          board.columns.map((column: any) => {
+            if (column.columsNameAre === taskStatus) {
+              console.log(column)
 
-            column.tasks.push(newTaskData)
-          }
-        })
-      }
-    })
+              column.tasks.push(newTaskData)
+            }
+          })
+        }
+      })
+    } else {
+      alert('Please fill the task title and task status')
+    }
     setMainData(mainData)
 
     localStorage.setItem('mainData', JSON.stringify(mainData))
@@ -216,6 +221,7 @@ function AddNewTask({
           onClick={handleCreateTask}
         >
           Create Task
+          {/* TODO: if there is no title u cant add that task */}
         </button>
       </div>
     </div>
