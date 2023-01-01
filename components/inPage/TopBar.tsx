@@ -89,6 +89,7 @@ function TopBar({
               height={16}
               alt="plus"
             />
+            <p>Add New Task</p>
           </button>
           <button
             className="settings--btn"

@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap');
 
+button {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+
+button:hover {
+    transform: scale(1.05);
+    /* border-radius: 8px; */
+    box-shadow: 0px 2px 3px rgba(54, 78, 126, 0.411);
+}
+
+button:active {
+    transform: scale(1);
+}
+
 * {
     font-family: 'Plus Jakarta Sans', sans-serif;
     box-sizing: border-box;
@@ -86,7 +103,7 @@ main {
     line-height: 23px;
     text-transform: uppercase;
 
-    max-width: 150px;
+    max-width: 200px;
 
     overflow: hidden;
     
@@ -119,8 +136,20 @@ main {
     border-radius: 24px;
 }
 
+.add-task--btn p {
+    display: none;
+}
+
 .settings--btn {
     background-color: transparent;
+    /* background-color: #EA5555; */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0;
+    padding: 10px 10px;
 
     border: none;
 }
@@ -337,6 +366,12 @@ main {
     min-height: 88px;
 
     margin-top: 20px;
+
+    transition: all 0.1s ease;
+}
+
+.tasks:hover {
+    transform: scale(1.05);
 }
 
 .tasks h3 {
@@ -995,6 +1030,8 @@ main {
         line-height: 19px;
         text-transform: capitalize;
 
+        overflow: hidden;
+
         transition: all 0.1s ease-in-out;
     }
 
@@ -1072,6 +1109,17 @@ main {
     /* TOP BAR */
     /* TOP BAR */
 
+    .top-bar {
+        height: 80px;
+    }
+
+    .board-title p {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+        letter-spacing: 0.5px;
+    }
+
     .app--logo.mobile {
         display: none;
     }
@@ -1087,6 +1135,21 @@ main {
     .big-screen--sidebar--button {
         display: unset;
     }
+
+    .add-task--btn p {
+        display: unset;
+
+        color: #FFFFFF;
+
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 19px;
+
+        margin-left: 10px;
+    }
+    
 
     /* TASK BOARD */
     /* TASK BOARD */
@@ -1112,6 +1175,112 @@ main {
         border: none;
         border-radius: 0px 100px 100px 0px;
     }
+
+    /* task details */
+    /* task details */
+    /* task details */
+
+    .task-details {
+        width: 480px;
+        margin-left: -240px;
+        padding: 32px;
+        top: 150px;
+    }
+
+    .bottom--details ul li {
+        width: 416px;
+        height: 40px;
+    }
+
+    .save--changes {
+        width: 416px;
+    }
+
+    .top--detail button {
+        /* background-color: #EA5555; */
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* EDIT TASK */
+    /* EDIT TASK */
+    /* EDIT TASK */
+
+    .about--task {
+        width: 480px;
+        min-height: 500px;
+        margin-left: -240px;
+        top: 150px;
+    }
+
+    .task--title,
+    .task--description {
+        width: 416px;
+    }
+
+    .subtask-name--btn {
+        width: 390px;
+        margin-top: 12px;
+    }
+
+    .task-create--btn {
+        width: 416px;
+        margin-top: 10px;
+    }
+
+    /* DELETE TASK */
+    /* DELETE TASK */
+    /* DELETE TASK */
+
+    .delete-section {
+        width: 480px;
+        margin-left: -240px;
+        top: 50%;
+        margin-top: -108.5px;
+    }
+
+    /* ADD TASK */
+    /* ADD TASK */
+    /* ADD TASK */
+
+    .task--subtasks,
+    .task--create--subtask--btn,
+    .task-status--select {
+        width: 416px;
+    }
+
+    /* EDIT BOARD */
+    /* EDIT BOARD */
+    /* EDIT BOARD */
+
+    .for-board {
+        width: 480px;
+        margin-left: -240px;
+        top: 50%;
+        margin-top: -380.5px;
+        max-height: 800px;
+    }
+
+    .show--info--part {
+        width: 386px;
+    }
+    
+    .show--info--part.title {
+        width: 416px;
+    }
+
+
+    /* ADD BOARD */
+    /* ADD BOARD */
+    /* ADD BOARD */
+
+    .show--info--part.add {
+        width: 416px;
+    }
+
+
 }
 
 
