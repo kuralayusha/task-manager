@@ -74,11 +74,12 @@ function AddNewBoard({
   // console.log({ columnsArray })
 
   return (
-    <div className="add-new-board">
+    <div className="for-board add">
       <h3>Add New Board</h3>
-      <div>
-        <label htmlFor="board-name">Board Name</label>
+      <div className="for-board--container">
+        <p>Board Name</p>
         <input
+          className="show--info--part board-name add"
           type="text"
           name="board-name"
           id="board-name"
@@ -86,12 +87,12 @@ function AddNewBoard({
           onChange={(e) => handleChangeBoardName(e)}
         />
         <br />
-        <label htmlFor="">Columns</label>
+        <p>Columns</p>
         {Array.from(Array(counter)).map((c, index) => {
           return (
             <div key={c}>
-              <br />{' '}
               <input
+                className="show--info--part add"
                 // value={columsNameAre}
                 type="text"
                 onChange={(e) => handleChangeColumsName(e)}
@@ -100,11 +101,20 @@ function AddNewBoard({
           )
         })}
         <br />
-        <button type="button" onClick={handleClick}>
+        <button
+          className="task-create--btn add"
+          type="button"
+          onClick={handleClick}
+        >
           + Add This Column
         </button>
         <br />
-        <button onClick={handleCreateBoard}>Create New Board</button>
+        <button
+          className="task-create--btn save"
+          onClick={handleCreateBoard}
+        >
+          Create New Board
+        </button>
       </div>
     </div>
   )

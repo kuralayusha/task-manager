@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 type TaskBoardProps = {
   tasksData: any
@@ -48,7 +49,12 @@ function TaskBoard({
           setIsSideBarHidden(false)
         }}
       >
-        sidebar
+        <Image
+          src={'/assets/icon-show-sidebar.svg'}
+          width={16}
+          height={10.22}
+          alt="show side bar"
+        />
       </button>
       {/* TODO: if there is no column show 
       a title and a button to add a new column 

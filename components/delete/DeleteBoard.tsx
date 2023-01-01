@@ -30,23 +30,26 @@ function DeleteBoard({
     setWantedDeleteBoard(false)
   }
   return (
-    <div className="deleteBoard">
+    <div className="delete-section">
       <h1>Delete this board?</h1>
       <p>
-        Are you sure you want to delete the{' '}
-        <label className="taskBoardFocus">{taskBoardFocus}</label>{' '}
+        Are you sure you want to delete the {''}
+        <label className="focus-label">"{taskBoardFocus}"</label> {''}
         board? This action will remove all columns and tasks and
         cannot be reversed.
       </p>
       <button
-        className="btn-deneme"
+        className="task-create--btn delete"
         onClick={() => {
           handleDeleteBoard()
         }}
       >
         Delete
       </button>
-      <button onClick={() => setWantedDeleteBoard(false)}>
+      <button
+        className="task-create--btn add"
+        onClick={() => setWantedDeleteBoard(false)}
+      >
         Cancel
       </button>
     </div>

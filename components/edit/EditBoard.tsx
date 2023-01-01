@@ -99,17 +99,20 @@ function EditBoard({
   console.log({ newBoardData })
   console.log({ mainData })
   return (
-    <div>
-      <h1>Edit Board</h1>
+    <div className="for-board edit">
+      <h3>Edit Board</h3>
       {newBoardData.boards.map((board: any) => {
         if (taskBoardFocus) {
           return (
-            <div>
+            <div className="for-board--container">
+              <p>Board Name</p>
               <input
+                className="show--info--part title"
                 type="text"
                 defaultValue={board.name}
                 onChange={(e) => handleBoardNameChange(e)}
               />
+              <p>Columns</p>
               <ul>
                 {board.columns.map((column: any) => {
                   return (
@@ -118,12 +121,14 @@ function EditBoard({
                       key={column.columsNameAre}
                     >
                       <button
+                        className="show--info--part"
                         id={column.columsNameAre}
                         key={column.columsNameAre}
                       >
                         {column.columsNameAre}
                       </button>
                       <button
+                        className="cross--btn"
                         value={column.columsNameAre}
                         onClick={(e) => {
                           handleColumnDelete(e)
@@ -140,6 +145,7 @@ function EditBoard({
                   <div key={c}>
                     {' '}
                     <input
+                      className="show--info--part"
                       // value={columsNameAre}
                       placeholder="Column Name"
                       type="text"
@@ -149,19 +155,30 @@ function EditBoard({
                 )
               })}
               <button
+                className="task-create--btn add"
                 onClick={() => {
                   handleColumnAdd()
                 }}
               >
-                Add Columns
+                + Add This Subtask
               </button>
             </div>
           )
         }
       })}
 
-      <button onClick={handleSaveChanges}>Save Changes</button>
-      <button onClick={openDeleteOption}>Delete This Board</button>
+      <button
+        className="task-create--btn save"
+        onClick={handleSaveChanges}
+      >
+        Save Changes
+      </button>
+      <button
+        className="task-create--btn delete"
+        onClick={openDeleteOption}
+      >
+        Delete This Board
+      </button>
     </div>
   )
 }

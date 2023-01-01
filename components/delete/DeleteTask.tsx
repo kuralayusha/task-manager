@@ -33,13 +33,18 @@ function DeleteTask({
   }
 
   return (
-    <div>
+    <div className="delete-section">
       <h1>Delete this task?</h1>
       <p>
-        Are you sure you want to delete the "{taskDetailFocus}" task
-        and its subtasks? This action cannot be reversed.
+        Are you sure you want to delete the {''}
+        <label className="focus-label">
+          "{taskDetailFocus}"
+        </label>{' '}
+        {''}
+        task and its subtasks? This action cannot be reversed.
       </p>
       <button
+        className="task-create--btn delete"
         onClick={() => {
           handleDeleteTask()
         }}
@@ -47,6 +52,7 @@ function DeleteTask({
         Delete
       </button>
       <button
+        className="task-create--btn add"
         onClick={() => {
           setWantedDeleteTask(false)
         }}

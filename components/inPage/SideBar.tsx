@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Image from 'next/image'
 
 type SideBarProps = {
   tasksData: any
@@ -25,34 +26,62 @@ function SideBar({
         <h3>All Boards ({mainData.boards.length})</h3>
         {mainData.boards.map((board: any) => (
           <button
+            className="board--buttons"
             key={board.name}
             onClick={() => setTaskBoardFocus(board.name)}
           >
-            {board.name}
+            <Image
+              src={'/assets/icon-board.svg'}
+              width={16}
+              height={16}
+              alt="board icon"
+            />
+            <p>{board.name}</p>
           </button>
         ))}
         <button
+          className="board--buttons create"
           onClick={() => {
             setWantedNewBoard(true)
           }}
         >
-          +Create New Board
+          <Image
+            src={'/assets/icon-board-blue.svg'}
+            width={16}
+            height={16}
+            alt="create new board"
+          />
+          <p>+Create New Board</p>
         </button>
       </div>
-      <br />
       <footer className="sideBarSettingsSide">
-        <div className="toggle--light--dark">
-          {/* img */}
-          <button>toggle light-dark</button>
-          {/* img */}
-        </div>
+        <button className="toggle-light-dark">
+          {/* <Image
+            src={'/assets/icon-dark-theme.svg'}
+            width={16}
+            height={16}
+            alt="theme"
+          /> */}
+          <Image
+            src={'/assets/icon-light-theme.svg'}
+            width={16}
+            height={16}
+            alt="theme"
+          />
+        </button>
         <button
+          className="toggle-light-dark"
           onClick={() => {
             setIsSideBarHidden(true)
           }}
         >
-          {/* eye img */}
-          Hide Sidebar
+          <Image
+            src={'/assets/icon-hide-sidebar.svg'}
+            width={16}
+            height={16}
+            alt="hide side bar"
+          />
+          <p>Hide Sidebar</p>
         </button>
       </footer>
     </div>

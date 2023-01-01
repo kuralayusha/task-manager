@@ -33,11 +33,19 @@ function TopBar({
 
   return (
     <div className="top-bar">
-      <div className="app--logo">
+      <div className="app--logo mobile">
         <Image
           src="/assets/logo-mobile.svg"
           width={24}
           height={25}
+          alt="logo"
+        />
+      </div>
+      <div className="app--logo dark">
+        <Image
+          src="/assets/logo-dark.svg"
+          width={152.53}
+          height={25.22}
           alt="logo"
         />
       </div>
