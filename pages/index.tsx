@@ -98,7 +98,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <>
+        <div
+          className={
+            ShowTaskDetails ||
+            wantedNewTask ||
+            wantedEditTask ||
+            wantedDeleteTask ||
+            wantedNewBoard ||
+            wantedEditBoard ||
+            wantedDeleteBoard
+              ? 'black--back'
+              : 'no--back'
+          }
+        >
           {ShowTaskDetails && (
             <ShowTaskDetail
               setShowTaskDetails={setShowTaskDetails}
@@ -135,7 +147,7 @@ export default function Home() {
               setTaskDetailFocus={setTaskDetailFocus}
             />
           )}
-        </>
+        </div>
         <>
           {wantedNewBoard && (
             <AddNewBoard
