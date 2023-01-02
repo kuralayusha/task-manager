@@ -12,6 +12,8 @@ type TaskBoardProps = {
   mainData: any
   setMainData: any
   setTaskDetailFocus: any
+  setWantedEditBoard: any
+  wantedEditBoard: any
 }
 
 function TaskBoard({
@@ -24,6 +26,8 @@ function TaskBoard({
   mainData,
   setMainData,
   setTaskDetailFocus,
+  setWantedEditBoard,
+  wantedEditBoard,
 }: TaskBoardProps) {
   const [a, render] = useState(false)
   function handleTaskDetailShow(e: any) {
@@ -36,6 +40,10 @@ function TaskBoard({
     render(!a)
   }, [mainData])
   // console.log(mainData)
+
+  function handleNewColumn() {
+    setWantedEditBoard(true)
+  }
   return (
     <div className="task-board">
       <button
@@ -96,6 +104,14 @@ function TaskBoard({
                   ))}
                 </div>
               ))}
+              <button
+                className="create--column--button"
+                onClick={() => {
+                  handleNewColumn()
+                }}
+              >
+                <p>+ New Column</p>
+              </button>
             </div>
           )
         }

@@ -182,7 +182,11 @@ function EditTask({
         })
       }
     })
-    localStorage.setItem('mainData', JSON.stringify(mainData))
+    if (newTaskData.title !== '') {
+      localStorage.setItem('mainData', JSON.stringify(mainData))
+    } else {
+      alert('Please enter a title')
+    }
     setWantedEditTask(false)
   }
 

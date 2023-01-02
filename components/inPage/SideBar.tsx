@@ -20,6 +20,10 @@ function SideBar({
   mainData,
   setMainData,
 }: SideBarProps) {
+  function handleDeleteData() {
+    localStorage.removeItem('mainData')
+    setMainData({ boards: [] })
+  }
   return (
     <div className={isSideBarHidden ? 'sidebar hidden' : 'sidebar'}>
       <div className="taskSide">
@@ -82,6 +86,13 @@ function SideBar({
             alt="hide side bar"
           />
           <p>Hide Sidebar</p>
+        </button>
+        <button
+          onClick={handleDeleteData}
+          className="data--delete"
+          title="Delete All Boards"
+        >
+          <p>X</p>
         </button>
       </footer>
     </div>

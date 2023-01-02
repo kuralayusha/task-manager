@@ -216,6 +216,8 @@ export default function Home() {
             mainData={mainData}
             setMainData={setMainData}
             setTaskDetailFocus={setTaskDetailFocus}
+            setWantedEditBoard={setWantedEditBoard}
+            wantedEditBoard={wantedEditBoard}
           />
         </div>
       </Layout>

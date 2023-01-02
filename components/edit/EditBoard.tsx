@@ -66,32 +66,41 @@ function EditBoard({
     console.log(e.target.value)
   }
 
+  console.log(newBoardData.boards[0].name)
+
   // when user click to save changes
   // first find the board that user want to edit in main data
   // then replace the board with new board data
   function handleSaveChanges() {
     const mainDataCopy = { ...mainData }
     mainDataCopy.boards.map((board: any) => {
-      // we need to find the board that user want to edit in main data
-      // then remove it from main data
-      // then add the new board data to main data in the exact place
-      // if (board.name === taskBoardFocus) {
-      //   mainDataCopy.boards.splice(board, 1)
-      //   mainDataCopy.boards.push(newBoardData.boards[0])
-      // }
       if (board.name === taskBoardFocus) {
         board.name = newBoardData.boards[0].name
         board.columns = newBoardData.boards[0].columns
       }
     })
-    setMainData(mainDataCopy)
-    localStorage.setItem('mainData', JSON.stringify(mainData))
-    setWantedEditBoard(false)
+    // if the board name is empty then dont save
+    if (newBoardData.boards[0].name === '') {
+      console.log('empty')
+
+      alert('Board name cannot be empty')
+      setWantedEditBoard(false)
+    } else {
+      console.log('not empty')
+
+      setMainData(mainDataCopy)
+      localStorage.setItem('mainData', JSON.stringify(mainData))
+      setWantedEditBoard(false)
+    }
   }
 
   function openDeleteOption() {
-    setWantedDeleteBoard(true)
-    setWantedEditBoard(false)
+    if (newBoardData.boards[0].name === '') {
+      alert('Board name cannot be empty')
+    } else {
+      setWantedDeleteBoard(true)
+      setWantedEditBoard(false)
+    }
   }
 
   // console.log(newBoardData.boards)

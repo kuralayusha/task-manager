@@ -2,20 +2,15 @@
 
 button {
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 
 
 button:hover {
-    transform: scale(1.05);
-    /* border-radius: 8px; */
     box-shadow: 0px 2px 3px rgba(54, 78, 126, 0.411);
+    /* border-radius: 8px; */
 }
-/* 
-button:active {
-    transform: scale(1);
-} */
 
 * {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -331,12 +326,40 @@ main {
     display: flex;
     flex-direction: column;
 
+
+    width: 270px;
+    /* min-width: 300px; */
+
+    /* overflow-x: scroll; */
+
+
+    margin: 0 16px;
+}
+
+.create--column--button {
+    background: linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%);
+    border: none;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
     min-width: 312px;
 
     /* overflow-x: scroll; */
 
 
     margin: 0 16px;
+    color: #828FA3;
+
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
 }
 
 .column--name {
@@ -373,9 +396,9 @@ main {
     transition: all 0.1s ease;
 }
 
-.tasks:hover {
+/* .tasks:hover {
     transform: scale(1.05);
-}
+} */
 
 .tasks h3 {
     color: #000112;
@@ -1106,6 +1129,26 @@ main {
         line-height: 19px;
 
         margin-left: 10px;
+    }
+
+    .data--delete {
+        background: #EA5555;
+        box-shadow: 0px 4px 5px rgb(54 78 126 / 47%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 170px;
+        height: 35px;
+        /* min-height: 48px; */
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .data--delete p {
+        color: #FFFFFF;
     }
 
     /* TOP BAR */
