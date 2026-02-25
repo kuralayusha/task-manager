@@ -24,26 +24,30 @@ const BoardColumn = ({
   const isCreateNewBoard = title === "Create New Board";
   if (newColumn)
     return (
-      <Droppable droppableId="-1">
-        {(provided) => (
-          <div
-            onClick={() => {
-              setModal("board");
-              if (!isCreateNewBoard) setModalData({ columnId: id });
-              else setModalData({ modalTitle: "Create Board" });
-            }}
-            className="h-full min-h-[500px] mt-9 overflow-x-visible bg-[#EAEFFA] dark:bg-[#22232E] flex justify-center items-center cursor-pointer rounded-lg"
-            ref={provided.innerRef}
-            style={
-              !isCreateNewBoard
-                ? { width: "280px", minWidth: "280px" }
-                : { width: "100%" }
-            }
-          >
-            <span className="text-gray-400 text-lg font-semibold">{title}</span>
-          </div>
-        )}
-      </Droppable>
+      <>
+        <Droppable droppableId="-1">
+          {(provided) => (
+            <div
+              onClick={() => {
+                setModal("board");
+                if (!isCreateNewBoard) setModalData({ columnId: id });
+                else setModalData({ modalTitle: "Create Board" });
+              }}
+              className="h-full min-h-[500px] mt-8 overflow-x-visible bg-[#EAEFFA] dark:bg-[#22232E] flex justify-center items-center cursor-pointer rounded-lg"
+              ref={provided.innerRef}
+              style={
+                !isCreateNewBoard
+                  ? { width: "280px", minWidth: "280px" }
+                  : { width: "100%" }
+              }
+            >
+              <span className="text-gray-400 text-lg font-semibold">
+                {title}
+              </span>
+            </div>
+          )}
+        </Droppable>
+      </>
     );
   return (
     <div className="h-full min-h-[200px] min-w-[280px] w-[280px] overflow-x-visible">

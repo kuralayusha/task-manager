@@ -19,7 +19,7 @@ const Board = () => {
   }, [boards, currentBoard]);
 
   const selectedBoardIndex = boards.findIndex(
-    (board) => board.title === currentBoard?.title
+    (board) => board.title === currentBoard?.title,
   );
 
   const onDragEnd = (result: DropResult) => {
@@ -44,10 +44,10 @@ const Board = () => {
     }
 
     const start = boards[selectedBoardIndex].columns.find(
-      (column) => column.id.toString() === source.droppableId
+      (column) => column.id.toString() === source.droppableId,
     );
     const finish = boards[selectedBoardIndex].columns.find(
-      (column) => column.id.toString() === destination.droppableId
+      (column) => column.id.toString() === destination.droppableId,
     );
 
     if (start === finish && start) {
@@ -63,14 +63,14 @@ const Board = () => {
       const newState = {
         ...boards[selectedBoardIndex],
         columns: boards[selectedBoardIndex].columns.map((column) =>
-          column.title === newColumn.title ? newColumn : column
+          column.title === newColumn.title ? newColumn : column,
         ),
       };
 
       setBoards(
         boards.map((board) =>
-          board.title === newState.title ? newState : board
-        )
+          board.title === newState.title ? newState : board,
+        ),
       );
       return;
     }
@@ -97,15 +97,15 @@ const Board = () => {
           column.title === newStart.title
             ? newStart
             : column.title === newFinish.title
-            ? newFinish
-            : column
+              ? newFinish
+              : column,
         ),
       };
 
       setBoards(
         boards.map((board) =>
-          board.title === newState.title ? newState : board
-        )
+          board.title === newState.title ? newState : board,
+        ),
       );
       return;
     }
@@ -128,6 +128,7 @@ const Board = () => {
           title={boards.length > 0 ? "+ New Column" : "Create New Board"}
           newColumn
         />
+        <div className="min-w-[1px] h-full min-h-[500px] mt-8 overflow-x-visible bg-transparent flex justify-center items-center cursor-pointer rounded-lg"></div>
       </div>
       <Modal board={currentBoard}></Modal>
     </DragDropContext>
