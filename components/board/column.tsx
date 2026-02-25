@@ -33,13 +33,12 @@ const BoardColumn = ({
                 if (!isCreateNewBoard) setModalData({ columnId: id });
                 else setModalData({ modalTitle: "Create Board" });
               }}
-              className="h-full min-h-[500px] mt-8 overflow-x-visible bg-[#EAEFFA] dark:bg-[#22232E] flex justify-center items-center cursor-pointer rounded-lg"
-              ref={provided.innerRef}
-              style={
+              className={`h-full min-h-[500px] mt-8 overflow-x-visible bg-[#EAEFFA] dark:bg-[#22232E] flex justify-center items-center cursor-pointer rounded-lg ${
                 !isCreateNewBoard
-                  ? { width: "280px", minWidth: "280px" }
-                  : { width: "100%" }
-              }
+                  ? "w-[240px] min-w-[240px] md:w-[280px] md:min-w-[280px]"
+                  : "w-full"
+              }`}
+              ref={provided.innerRef}
             >
               <span className="text-gray-400 text-lg font-semibold">
                 {title}
@@ -50,7 +49,7 @@ const BoardColumn = ({
       </>
     );
   return (
-    <div className="h-full min-h-[200px] min-w-[280px] w-[280px] overflow-x-visible">
+    <div className="h-full min-h-[200px] min-w-[240px] w-[240px] md:min-w-[280px] md:w-[280px] overflow-x-visible">
       {title && (
         <div className="flex items-center mb-4">
           <div
