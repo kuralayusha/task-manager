@@ -2,7 +2,7 @@ import Task from "@components/task";
 import { Task as TaskType } from "@customTypes/data";
 import { useModalStore } from "@store/modal";
 import React from "react";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 type BoardColumnProps = {
   index?: number;
@@ -33,7 +33,7 @@ const BoardColumn = ({
                 if (!isCreateNewBoard) setModalData({ columnId: id });
                 else setModalData({ modalTitle: "Create Board" });
               }}
-              className={`h-full min-h-[500px] mt-8 overflow-x-visible bg-[#EAEFFA] dark:bg-[#22232E] flex justify-center items-center cursor-pointer rounded-lg ${
+              className={`h-full min-h-[70vh] mt-8 overflow-x-visible bg-[#EAEFFA] dark:bg-[#22232E] flex justify-center items-center cursor-pointer rounded-lg ${
                 !isCreateNewBoard
                   ? "w-[240px] min-w-[240px] md:w-[280px] md:min-w-[280px]"
                   : "w-full"
@@ -62,20 +62,37 @@ const BoardColumn = ({
         </div>
       )}
       <Droppable droppableId={id?.toString() || "empty"}>
-        {(provided) => (
+        {(provided, snapshot) => (
           <ul
-            className="flex flex-col gap-4 min-h-[300px]"
+            className={`flex flex-col min-h-[70vh] rounded-lg p-1 transition-colors duration-200 ${
+              snapshot.isDraggingOver
+                ? "bg-[#EAEFFA]/80 dark:bg-[#22232E]/80 ring-2 ring-inset ring-[#575FC6]/40 dark:ring-[#575FC6]/50"
+                : ""
+            }`}
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
             {tasks?.length ? (
               tasks.map((task, index) => (
-                <li key={task.id}>
-                  <Task {...task} index={index} columnId={id}></Task>
-                </li>
+                <Draggable
+                  key={task.id}
+                  draggableId={task.id.toString()}
+                  index={index}
+                >
+                  {(draggableProvided) => (
+                    <li
+                      ref={draggableProvided.innerRef}
+                      {...draggableProvided.draggableProps}
+                      {...draggableProvided.dragHandleProps}
+                      className="mb-4 list-none shrink-0"
+                    >
+                      <Task {...task} columnId={id} />
+                    </li>
+                  )}
+                </Draggable>
               ))
             ) : (
-              <li>
+              <li className="shrink-0 list-none">
                 <button
                   type="button"
                   onClick={() => {
