@@ -268,6 +268,7 @@ const BoardModal = () => {
                           input: {
                             height: "30px",
                             backgroundColor: "#2B2C37",
+                            color: "#ffffff",
                           },
                         },
                       }}
