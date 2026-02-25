@@ -74,7 +74,7 @@ const ConfirmationModal = () => {
       </p>
       <div className="flex justify-between">
         <button
-          className="bg-red-400 hover:bg-red-500 flex-1 font-semibold text-sm text-black dark:text-white px-4 py-2 rounded-full mt-8"
+          className="bg-red-400 hover:bg-red-500 flex-1 font-semibold text-sm text-white px-4 py-2 rounded-full mt-8"
           onClick={() => handleConfirm()}
         >
           Delete

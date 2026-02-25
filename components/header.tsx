@@ -109,7 +109,10 @@ const Header = ({ showSidebar, setShowSidebar }: HeaderProps) => {
           </div>
 
           {showMore && (
-            <div className="absolute right-0 w-44 h-24 bg-[#EAEFFA] dark:bg-[#22232E] shadow-lg shadow-[#00000026] rounded-lg top-14 sm:top-[72px] lg:top-[86px] flex flex-col px-6 justify-around">
+            <div
+              ref={moreRef}
+              className="absolute right-0 w-44 h-24 bg-[#EAEFFA] dark:bg-[#22232E] shadow-lg shadow-[#00000026] rounded-lg top-14 sm:top-[72px] lg:top-[86px] flex flex-col px-6 justify-around z-30"
+            >
               <span
                 className="text-sm hover:underline cursor-pointer text-gray-600 dark:text-gray-200"
                 onClick={() => {
@@ -120,7 +123,6 @@ const Header = ({ showSidebar, setShowSidebar }: HeaderProps) => {
                   });
                   setShowMore(false);
                 }}
-                ref={moreRef}
               >
                 Edit Board
               </span>
@@ -133,6 +135,7 @@ const Header = ({ showSidebar, setShowSidebar }: HeaderProps) => {
                     boardId: currentBoard?.id,
                   });
                   setModal("confirmation");
+                  setShowMore(false);
                 }}
               >
                 Delete Board
