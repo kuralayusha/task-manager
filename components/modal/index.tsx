@@ -15,14 +15,21 @@ type ModalProps = {
 const Modal = ({ board }: ModalProps) => {
   const { modal, setModal, setModalData } = useModalStore();
   const [mounted, setMounted] = React.useState(false);
-  const ref = useRef(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const closeModal = () => {
     setModal(undefined);
     setModalData(undefined);
   };
 
-  useOnClickOutside(ref, closeModal);
+  const handleBackdropClick = (e: React.MouseEvent | React.TouchEvent) => {
+    if (e.target !== e.currentTarget) return;
+    e.preventDefault();
+    e.stopPropagation();
+    closeModal();
+  };
+
+  useOnClickOutside(contentRef, closeModal);
 
   useEffect(() => {
     setMounted(true);
@@ -36,10 +43,18 @@ const Modal = ({ board }: ModalProps) => {
             background: "rgba(0,0,0,0.5)",
             display: modal ? "flex" : "none",
           }}
+          onClick={handleBackdropClick}
+          onTouchEnd={handleBackdropClick}
+          onTouchEndCapture={(e) => {
+            if (e.target !== e.currentTarget) return;
+            e.preventDefault();
+          }}
         >
           <div
             className="w-[480px] min-h-[250px] bg-white dark:bg-[#2b2c37] rounded-lg p-6 mx-2 sm:p-8"
-            ref={ref}
+            ref={contentRef}
+            onClick={(e) => e.stopPropagation()}
+            onTouchEnd={(e) => e.stopPropagation()}
           >
             {modal === "task-create" && <TaskCreateModal {...(board as any)} />}
             {modal === "task-view" && <TaskViewModal {...(board as any)} />}
