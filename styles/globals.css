@@ -122,3 +122,9 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Dark mode: select ve option metni okunaklı olsun */
+.dark select,
+.dark select option {
+  color: #fff;
+}

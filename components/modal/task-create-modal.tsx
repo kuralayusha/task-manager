@@ -297,11 +297,11 @@ const TaskCreateModal = ({ id, title, columns }: Props) => {
         </button>
 
         <div className="flex flex-col gap-1 my-4">
-          <label htmlFor="column-title" className="text-sm">
+          <label htmlFor="column-title" className="text-xs font-semibold text-gray-400 dark:text-white">
             Status
           </label>
           <select
-            className="bg-white dark:bg-[#2b2c37] border border-gray-200 dark:border-gray-700 p-2 text-sm rounded-lg text-black dark:text-white"
+            className="bg-white dark:bg-[#2b2c37] border border-gray-200 dark:border-gray-700 p-2 text-sm rounded-lg text-black dark:text-white w-full"
             name="column-title"
             onChange={(e) => {
               setTaskColumn(

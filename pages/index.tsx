@@ -1,23 +1,29 @@
 import Sidebar from "@components/sidebar";
 import Header from "@components/header";
 import Board from "@components/board/board";
+import { ClientOnly } from "@components/client-only";
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import Modal from "@components/modal";
 
+const MOBILE_BREAKPOINT = 768;
+
 const Index = () => {
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [_, render] = useState(0);
   const container = useRef<HTMLDivElement>(null);
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT;
 
   useEffect(() => {
-    console.log("w: ", container?.current?.clientWidth);
+    if (typeof window !== "undefined" && window.innerWidth >= MOBILE_BREAKPOINT) {
+      setShowSidebar(true);
+    }
   }, []);
 
   return (
+    <ClientOnly>
     <div className="w-full h-screen">
       <Header
         showSidebar={showSidebar}
@@ -56,6 +62,7 @@ const Index = () => {
         <div id="modal-root"></div>
       </div>
     </div>
+    </ClientOnly>
   );
 };
 

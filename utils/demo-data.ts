@@ -1,338 +1,166 @@
 import { Board } from "@customTypes/data";
 
+/**
+ * Demo data: Structured like a mid-project kanban board
+ * of someone building this task-manager app.
+ */
 export const demoData: { boards: Board[] } = {
   boards: [
     {
       id: 0,
-      title: "Platform Launch",
+      title: "Task Manager Project",
       columns: [
         {
           id: 0,
-          title: "Todo",
-          color: "#DA1D1D",
+          title: "Backlog",
+          color: "#6B7280",
           tasks: [
             {
               id: 0,
-              title: "Build UI for onboarding flow",
-              description: "",
+              title: "Add keyboard shortcuts",
+              description:
+                "Shortcut support for board/task navigation and quick actions.",
               subtasks: [
-                {
-                  title: "Sign up page",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Sign in page",
-                  iscompleted: false,
-                  id: 1,
-                },
-                {
-                  title: "Welcome page",
-                  iscompleted: false,
-                  id: 2,
-                },
+                { title: "Design shortcut list", iscompleted: false, id: 0 },
+                { title: "Cmd+K global search", iscompleted: false, id: 1 },
+                { title: "Escape to close modal", iscompleted: false, id: 2 },
               ],
             },
             {
               id: 1,
-              title: "Build UI for search",
-              description: "",
+              title: "Export board as JSON",
+              description: "Export feature for backup and portability.",
               subtasks: [
-                {
-                  title: "Search page",
-                  iscompleted: false,
-                  id: 0,
-                },
+                { title: "Write export API/helper", iscompleted: false, id: 0 },
+                { title: "Add download button", iscompleted: false, id: 1 },
+                { title: "Consider import flow (reverse)", iscompleted: false, id: 2 },
               ],
             },
             {
               id: 2,
-              title: "Build settings UI",
-              description: "",
+              title: "Board templates",
+              description: "Pre-made template option when creating a new board.",
               subtasks: [
-                {
-                  title: "Account page",
-                  iscompleted: false,
-                  id: 0,
-                },
-                {
-                  title: "Billing page",
-                  iscompleted: false,
-                  id: 1,
-                },
-              ],
-            },
-            {
-              id: 3,
-              title: "QA and test all major user journeys",
-              description:
-                "Once we feel version one is ready, we need to rigorously test it both internally and externally to identify any major gaps.",
-              subtasks: [
-                {
-                  title: "Internal testing",
-                  iscompleted: false,
-                  id: 0,
-                },
-                {
-                  title: "External testing",
-                  iscompleted: false,
-                  id: 1,
-                },
+                { title: "Define template data structure", iscompleted: false, id: 0 },
+                { title: "2-3 sample templates (Agile, Simple, Personal)", iscompleted: false, id: 1 },
               ],
             },
           ],
         },
         {
           id: 1,
-          title: "Doing",
-          color: "#DADA1D",
+          title: "To Do",
+          color: "#F59E0B",
           tasks: [
             {
-              id: 4,
-              title: "Design settings and search pages",
-              description: "",
+              id: 3,
+              title: "Task detail modal redesign",
+              description: "Subtask progress bar and clearer layout.",
               subtasks: [
-                {
-                  title: "Settings - Account page",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Settings - Billing page",
-                  iscompleted: true,
-                  id: 1,
-                },
-                {
-                  title: "Search page",
-                  iscompleted: false,
-                  id: 2,
-                },
+                { title: "Wireframe in Figma", iscompleted: false, id: 0 },
+                { title: "Subtask progress bar component", iscompleted: false, id: 1 },
+                { title: "Full-screen modal on mobile", iscompleted: false, id: 2 },
+              ],
+            },
+            {
+              id: 4,
+              title: "Column color picker",
+              description: "User-defined color per column.",
+              subtasks: [
+                { title: "Color picker UI (sidebar/modal)", iscompleted: false, id: 0 },
+                { title: "Wire color value to Column type", iscompleted: false, id: 1 },
+                { title: "Default palette (6-8 colors)", iscompleted: false, id: 2 },
               ],
             },
             {
               id: 5,
-              title: "Add account management endpoints",
-              description: "",
+              title: "Empty state illustrations",
+              description: "Meaningful visuals and CTA when board/column is empty.",
               subtasks: [
-                {
-                  title: "Upgrade plan",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Cancel plan",
-                  iscompleted: true,
-                  id: 1,
-                },
-                {
-                  title: "Update payment method",
-                  iscompleted: false,
-                  id: 2,
-                },
-              ],
-            },
-            {
-              id: 6,
-              title: "Design onboarding flow",
-              description: "",
-              subtasks: [
-                {
-                  title: "Sign up page",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Sign in page",
-                  iscompleted: false,
-                  id: 1,
-                },
-                {
-                  title: "Welcome page",
-                  iscompleted: false,
-                  id: 2,
-                },
-              ],
-            },
-            {
-              id: 7,
-              title: "Add search enpoints",
-              description: "",
-              subtasks: [
-                {
-                  title: "Add search endpoint",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Define search filters",
-                  iscompleted: false,
-                  id: 1,
-                },
-              ],
-            },
-            {
-              id: 8,
-              title: "Add authentication endpoints",
-              description: "",
-              subtasks: [
-                {
-                  title: "Define user model",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Add auth endpoints",
-                  iscompleted: false,
-                  id: 1,
-                },
-              ],
-            },
-            {
-              id: 9,
-              title:
-                "Research pricing points of various competitors and trial different business models",
-              description:
-                "We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.",
-              subtasks: [
-                {
-                  title: "Research competitor pricing and business models",
-                  iscompleted: true,
-                  id: 2,
-                },
-                {
-                  title: "Outline a business model that works for our solution",
-                  iscompleted: false,
-                  id: 0,
-                },
-                {
-                  title:
-                    "Talk to potential customers about our proposed solution and ask for fair price expectancy",
-                  iscompleted: false,
-                  id: 1,
-                },
+                { title: "Empty board state", iscompleted: false, id: 0 },
+                { title: "Empty column state", iscompleted: false, id: 1 },
               ],
             },
           ],
         },
         {
           id: 2,
-          title: "Done",
-          color: "#1BCC0F",
+          title: "In Progress",
+          color: "#3B82F6",
           tasks: [
             {
-              id: 10,
-              title: "Conduct 5 wireframe tests",
-              description:
-                "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
+              id: 6,
+              title: "Fix drag-and-drop on mobile",
+              description: "Drag-drop sometimes doesn't trigger on touch events.",
               subtasks: [
-                {
-                  title: "Complete 5 wireframe prototype tests",
-                  iscompleted: true,
-                  id: 0,
-                },
+                { title: "Review react-beautiful-dnd docs", iscompleted: true, id: 0 },
+                { title: "Test touch handlers", iscompleted: true, id: 1 },
+                { title: "Fallback: long-press + move", iscompleted: false, id: 2 },
+              ],
+            },
+            {
+              id: 7,
+              title: "Theme persistence bug",
+              description: "Theme sometimes resets on page reload.",
+              subtasks: [
+                { title: "Check next-themes + persist behaviour", iscompleted: true, id: 0 },
+                { title: "Prevent flash on SSR", iscompleted: false, id: 1 },
+              ],
+            },
+            {
+              id: 8,
+              title: "New task creation validation",
+              description: "Prevent empty title and unnecessary field submission.",
+              subtasks: [
+                { title: "Form validation (title required)", iscompleted: true, id: 0 },
+                { title: "Error messages and disabled submit", iscompleted: false, id: 1 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 3,
+          title: "Done",
+          color: "#10B981",
+          tasks: [
+            {
+              id: 9,
+              title: "Board CRUD (create / edit / delete)",
+              description: "Add board, rename, and delete flows.",
+              subtasks: [
+                { title: "Board modal (create/edit)", iscompleted: true, id: 0 },
+                { title: "Delete confirmation modal", iscompleted: true, id: 1 },
+                { title: "setBoards integration in store", iscompleted: true, id: 2 },
+              ],
+            },
+            {
+              id: 10,
+              title: "Fix hydration errors",
+              description: "Resolved SSR vs client HTML mismatch.",
+              subtasks: [
+                { title: "Theme/logo render after mount", iscompleted: true, id: 0 },
+                { title: "ClientOnly wrapper for store data", iscompleted: true, id: 1 },
+                { title: "Header title and button text", iscompleted: true, id: 2 },
               ],
             },
             {
               id: 11,
-              title: "Create wireframe prototype",
-              description:
-                "Create a greyscale clickable wireframe prototype to test our asssumptions so far.",
+              title: "Sidebar collapse + mobile overlay",
+              description: "Toggle on desktop, overlay to close on mobile.",
               subtasks: [
-                {
-                  title: "Create clickable wireframe prototype in Balsamiq",
-                  iscompleted: true,
-                  id: 0,
-                },
+                { title: "showSidebar state and toggle", iscompleted: true, id: 0 },
+                { title: "Mobile overlay (tap to close)", iscompleted: true, id: 1 },
+                { title: "Class transitions by breakpoint", iscompleted: true, id: 2 },
               ],
             },
             {
               id: 12,
-              title: "Review results of usability tests and iterate",
-              description:
-                "Keep iterating through the subtasks until we're clear on the core concepts for the app.",
+              title: "Basic task create modal",
+              description: "Task add form and store persistence.",
               subtasks: [
-                {
-                  title:
-                    "Meet to review notes from previous tests and plan changes",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Make changes to paper prototypes",
-                  iscompleted: true,
-                  id: 1,
-                },
-                {
-                  title: "Conduct 5 usability tests",
-                  iscompleted: true,
-                  id: 2,
-                },
-              ],
-            },
-            {
-              id: 13,
-              title:
-                "Create paper prototypes and conduct 10 usability tests with potential customers",
-              description: "",
-              subtasks: [
-                {
-                  title: "Create paper prototypes for version one",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Complete 10 usability tests",
-                  iscompleted: true,
-                  id: 1,
-                },
-              ],
-            },
-            {
-              id: 13,
-              title: "Market discovery",
-              description:
-                "We need to define and refine our core product. Interviews will help us learn common pain points and help us define the strongest MVP.",
-              subtasks: [
-                {
-                  title: "Interview 10 prospective customers",
-                  iscompleted: true,
-                  id: 0,
-                },
-              ],
-            },
-            {
-              id: 15,
-              title: "Competitor analysis",
-              description: "",
-              subtasks: [
-                {
-                  title: "Find direct and indirect competitors",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "SWOT analysis for each competitor",
-                  iscompleted: true,
-                  id: 1,
-                },
-              ],
-            },
-            {
-              id: 16,
-              title: "Research the market",
-              description:
-                "We need to get a solid overview of the market to ensure we have up-to-date estimates of market size and demand.",
-              subtasks: [
-                {
-                  title: "Write up research analysis",
-                  iscompleted: true,
-                  id: 0,
-                },
-                {
-                  title: "Calculate TAM",
-                  iscompleted: true,
-                  id: 1,
-                },
+                { title: "Modal UI and form fields", iscompleted: true, id: 0 },
+                { title: "Subtask add/remove", iscompleted: true, id: 1 },
+                { title: "Add task to selected column", iscompleted: true, id: 2 },
               ],
             },
           ],

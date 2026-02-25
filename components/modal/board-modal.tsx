@@ -294,7 +294,7 @@ const BoardModal = () => {
 
         <div className="flex w-full gap-8 mt-6">
           <button
-            className="bg-[#575FC6]  dark:text-white rounded-full py-2 text-sm font-semibold mt-2 flex-1"
+            className="bg-[#575FC6] text-white rounded-full py-2 text-sm font-semibold mt-2 flex-1"
             type="button"
             onClick={() => handleSave()}
           >
