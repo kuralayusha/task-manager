@@ -13,12 +13,13 @@ type ModalProps = {
 };
 
 const Modal = ({ board }: ModalProps) => {
-  const { modal, setModal } = useModalStore();
+  const { modal, setModal, setModalData } = useModalStore();
   const [mounted, setMounted] = React.useState(false);
   const ref = useRef(null);
 
   const closeModal = () => {
     setModal(undefined);
+    setModalData(undefined);
   };
 
   useOnClickOutside(ref, closeModal);

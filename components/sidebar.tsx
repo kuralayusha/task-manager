@@ -16,7 +16,11 @@ const Sidebar = ({ showSidebar, setShowSidebar }: SidebarProps) => {
   const { boards, currentBoard, setCurrentBoard } = useDataStore();
   const { theme, setTheme } = useTheme();
   return (
-    <div className={`flex desktop transition `}>
+    <div
+      className={`flex desktop transition shrink-0 ${
+        showSidebar ? "w-[280px] min-w-[280px]" : "w-0 min-w-0 overflow-visible"
+      }`}
+    >
       <div
         className={`bg-white dark:bg-[#2b2c37] z-20 dark:bg-dark-gray h-[calc(100vh-64px)] sm:h-[calc(100vh-80px)] lg:h-[calc(100vh-96px)] w-[280px] pt-8 flex flex-col justify-between transition  ${
           showSidebar ? "" : "-translate-x-full"

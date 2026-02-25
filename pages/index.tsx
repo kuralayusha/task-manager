@@ -2,7 +2,7 @@ import Sidebar from "@components/sidebar";
 import Header from "@components/header";
 import Board from "@components/board/board";
 import { ClientOnly } from "@components/client-only";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import Modal from "@components/modal";
@@ -11,8 +11,6 @@ const MOBILE_BREAKPOINT = 768;
 
 const Index = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [_, render] = useState(0);
-  const container = useRef<HTMLDivElement>(null);
 
   const isMobile =
     typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT;
@@ -38,7 +36,6 @@ const Index = () => {
           style={{
             width: "100%",
           }}
-          ref={container}
         >
           <Sidebar
             showSidebar={showSidebar}
@@ -52,14 +49,7 @@ const Index = () => {
             ></div>
           )}
           <main
-            className={`transition bg-[#F4F7FD] dark:bg-[#20212C] overflow-scroll  p-6 h-[calc(100vh-64px)] sm:h-[calc(100vh-80px)] lg:h-[calc(100vh-96px)] ${
-              !showSidebar && !isMobile ? "-translate-x-[280px]" : "w-full"
-            }`}
-            style={{
-              width: showSidebar
-                ? "100%"
-                : `calc(${container?.current?.clientWidth}px + 280px)`,
-            }}
+            className="flex-1 min-w-0 transition bg-[#F4F7FD] dark:bg-[#20212C] overflow-scroll p-6 h-[calc(100vh-64px)] sm:h-[calc(100vh-80px)] lg:h-[calc(100vh-96px)]"
           >
             {<Board></Board>}
           </main>

@@ -329,7 +329,7 @@ const TaskCreateModal = ({ id, title, columns }: Props) => {
           className="bg-[#575FC6] text-white rounded-full py-2 text-sm font-semibold mt-4"
           type="submit"
         >
-          {isCreateTask ? "Create Task" : "Edit Task"}
+          {isCreateTask ? "Create Task" : "Save Task"}
         </button>
       </div>
     </form>

@@ -68,11 +68,31 @@ const BoardColumn = ({
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            {tasks?.map((task, index) => (
-              <li key={task.id}>
-                <Task {...task} index={index} columnId={id}></Task>
+            {tasks?.length ? (
+              tasks.map((task, index) => (
+                <li key={task.id}>
+                  <Task {...task} index={index} columnId={id}></Task>
+                </li>
+              ))
+            ) : (
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setModal("task-create");
+                    setModalData({ columnId: id });
+                  }}
+                  className="w-full min-h-[120px] mt-2 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 bg-[#EAEFFA]/50 dark:bg-[#22232E]/50 hover:bg-[#EAEFFA] dark:hover:bg-[#22232E] hover:border-[#575FC6] dark:hover:border-[#575FC6] transition-colors flex flex-col items-center justify-center gap-1.5 py-4 px-3 cursor-pointer group"
+                >
+                  <span className="text-[#575FC6] font-semibold text-sm group-hover:underline">
+                    + New Task
+                  </span>
+                  <span className="text-gray-400 dark:text-gray-500 text-xs">
+                    or drag and drop a task
+                  </span>
+                </button>
               </li>
-            ))}
+            )}
             {provided.placeholder}
           </ul>
         )}
