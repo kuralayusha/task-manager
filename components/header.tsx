@@ -43,17 +43,26 @@ const Header = ({ showSidebar, setShowSidebar }: HeaderProps) => {
         ></Image>
       </div>
       <div className="flex relative px-4  transition-all  border-gray-200 dark:border-gray-700 justify-between w-full items-center">
-        <div className="flex items-center">
-          <h1 className="font-semibold text-xl sm:ml-4 text-black dark:text-white">
+        <div
+          className="flex items-center max-md:cursor-pointer"
+          onClick={() => {
+            if (typeof window !== "undefined" && window.innerWidth < 768) {
+              setShowSidebar(!showSidebar);
+            }
+          }}
+          role="button"
+          aria-label="Board menüsünü aç"
+        >
+          <h1 className="font-semibold text-xl sm:ml-4 text-black dark:text-white pointer-events-none">
             {mounted ? (currentBoard?.title || "") : ""}
           </h1>
-          <span onClick={() => setShowSidebar(!showSidebar)} className="">
+          <span className="pointer-events-none">
             <Image
               src="/assets/icon-chevron-down.svg"
               width={12}
               height={12}
               alt=""
-              className={`mobile ml-2 cursor-pointer transition-all  ${
+              className={`mobile ml-2 transition-all ${
                 showSidebar ? "rotate-180" : ""
               }`}
             ></Image>

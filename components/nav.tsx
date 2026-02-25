@@ -20,25 +20,27 @@ const Nav = () => {
         {boards.map((board) => (
           <div
             key={board.id}
-            className={`flex items-center hover:bg-[#575FC6] dark:hover:bg-white px-2 py-3 pl-6 rounded-r-full cursor-pointer group font-semibold ${
-              currentBoard?.id === board.id ? "bg-[#575FC6] text-white" : ""
+            className={`flex items-center px-2 py-3 pl-6 rounded-r-full cursor-pointer group font-semibold ${
+              currentBoard?.id === board.id
+                ? "bg-[#575FC6] text-white"
+                : "hover:bg-[#575FC6]/50 dark:hover:bg-[#575FC6]/50"
             }`}
             onClick={() =>
               setCurrentBoard(boards.find((b) => b.id === board.id)!)
             }
           >
             <IconBoard
-              className={`dark:group-hover:fill-[#575FC6] ${
+              className={
                 currentBoard?.id === board.id
                   ? "fill-white group-hover:fill-white"
-                  : "fill-gray-400"
-              }`}
+                  : "fill-gray-400 dark:fill-gray-200 group-hover:fill-white dark:group-hover:fill-white"
+              }
             />
             <span
-              className={`pl-4 text-gray-400 dark:group-hover:text-[#575FC6] font-semibold ${
+              className={`pl-4 font-semibold ${
                 currentBoard?.id === board.id
                   ? "text-white dark:text-white"
-                  : ""
+                  : "text-gray-400 dark:text-gray-200 group-hover:text-white dark:group-hover:text-white"
               }`}
             >
               {board.title}
